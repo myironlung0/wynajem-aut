@@ -1,0 +1,84 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+ul li
+{
+    list-style: none;
+    display: inline;
+    white-space: nowrap;
+    font-size: 20px;
+}
+
+ul a:link, ul a:visited
+{
+    list-style: none;
+    width: 168px;
+    text-decoration: none;
+    color: black;
+    padding: 4px;
+}
+
+ul a:hover
+{
+    list-style: none;
+    border-style: inset;
+    color: #a81a29;
+    padding: 6px 3px 3px 6px;
+}
+ul, ul li{
+    display: inline;
+    list-style: none;
+    overflow: hidden;
+    text-align: center;
+    border: solid 2px;
+    border-color: black;
+    float: left;
+    white-space: nowrap;
+    font-size: 20px;
+    height: 10%;
+}
+
+nav{
+    height: 10%;
+    margin-bottom: 50px;
+}
+
+.zalogujButton{
+    display: block;
+    float: right;
+    border: solid 6px;
+    border-color: red;
+    margin: 10px;
+    text-decoration: none;
+    text-color: black;
+    font-size: 20px;
+    text-align: center;
+    font-family: Arial;
+}
+li a:hover{
+    padding: 6px 3px 3px 6px;
+}
+
+.logowanie{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align: left;
+}
+.rejestracja{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align: left;
+}
+input{
+    display: block;
+}
+.kontakt{
+    display: block;
+}
+iframe{
+    align-content: center;
+}

@@ -2,9 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Title</title>
 </head>
 <body>
+<header>
+    <h1>WYNAJEM SAMOCHODOW - witaj </h1>
+    <li><a href="logowanie.html" class="zalogujButton">Zaloguj</a></li>
+</header>
+<nav>
+    <ul>
+        <li><a href="glowna.html">Home</a></li>
+        <li><a href="wyszukaj.html">Oferta</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="onas.html">O nas</a></li>
+    </ul>
+</nav>
+<div class="logowanie">
+    <h2>Zaloguj się</h2>
+    <!-- /login powinien sie wywoływać z javy i w javie powinna być waldacja z bazą -->
+    <form action="/login" method="post">
+        <label>Login:</label>
+        <input type="text" name="login" required>
 
+        <label>Hasło:</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Zaloguj</button>
+    </form>
+</div>
+<div class="rejestracja">
+    <h2>Nie masz konta? Nie ma problemu! Zarejestruj się!</h2>
+    <!--To samo co wyżej - /register wywoływany z javy + obsługa formularza (hasła)-->
+    <form action="/register" method="post">
+        <label>Login:</label>
+        <input type="text" name="login" required>
+        <label>Email:</label>
+        <input type="email" name="email" required>
+
+        <label>Hasło:</label>
+        <input type="password" name="password" required>
+
+        <label>Powtórz hasło:</label>
+        <input type="password" name="confirmPassword" required>
+
+        <input type="checkbox" name="reg" required>
+        <label>Zapoznałem/łam się z <a href="regulamin">regulaminem</a>.</label>
+
+        <button type="submit">Zarejestruj</button>
+    </form>
+</div>
 </body>
 </html>
