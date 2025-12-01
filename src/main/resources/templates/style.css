@@ -3,21 +3,40 @@
     padding: 0;
 }
 
-ul{
+nav{ /* Blok nawigacyjny menu */
+    text-align: center;
+    height: 10%;
+    margin-bottom: 50px;
+}
+nav ul{ /* Blok listy menu */
     float: none;
     list-style: none;
+    display: inline-block;
+    border: none;
 }
 
-ul li
+nav ul li /* Element listy w menu */
 {
-    border: solid 2px;
     list-style: none;
-    display: inline;
+    border: none;
+    display: inline-block;
     white-space: nowrap;
     font-size: 20px;
+    margin: 0 10px;
 }
 
-ul a:link, ul a:visited
+nav ul li a{ /* Link do strony w menu */
+    border: 5px solid coral;
+    border-radius: 10px;
+    padding: 6px 20px;
+    background-color: lightcoral;
+}
+
+nav ul li a:hover { /* Po najechaniu na przycisk w panelu nav powinnien zmienić kolor */
+    color: red;
+}
+
+ul a:link, ul a:visited /* Nie widać odwiedzonych linków */
 {
     list-style: none;
     width: 168px;
@@ -26,65 +45,49 @@ ul a:link, ul a:visited
     padding: 4px;
 }
 
-ul a:hover
-{
-    list-style: none;
-    border-style: inset;
-    color: #a81a29;
-    padding: 6px 3px 3px 6px;
-}
-ul, ul li{
-    display: inline;
-    list-style: none;
-    overflow: hidden;
-    text-align: center;
-    border: solid 2px;
-    border-color: black;
-    white-space: nowrap;
-    font-size: 20px;
-    height: 10%;
-}
-
-nav{
-    text-align: center;
-    height: 10%;
-    margin-bottom: 50px;
-}
-
-.zalogujButton{
+.zalogujButton{ /* Przycisk zaloguj */
     display: block;
     float: right;
-    border: solid 6px;
-    border-color: red;
-    margin: 10px;
+    border: solid 5px;
+    border-color: darkred;
+    background-color: #bf2c2c;
+    margin: 5px;
     text-decoration: none;
-    text-color: black;
     font-size: 20px;
     text-align: center;
     font-family: Arial;
-}
-li a:hover{
-    padding: 6px 3px 3px 6px;
+    border-radius: 10px;
 }
 
-.logowanie{
+a.zalogujButton:hover{ /* Przycisk zaloguj po najechaniu na niego */
+    background-color: darkred;
+    color: white;
+}
+
+.logowanie{ /* Formularz logowania*/
     display: flex;
     flex-direction: column;
     text-align: left;
     align: left;
 }
-.rejestracja{
+.rejestracja{ /* Formularz rejestracji */
     display: flex;
     flex-direction: column;
     text-align: left;
     align: left;
 }
-input{
+
+a.regChk{
+    text-decoration: none;
+    color: mediumvioletred;
+}
+
+div input{
     display: block;
 }
 .kontakt{
     display: block;
 }
-iframe{
+iframe{ /* Mapa Google */
     align-content: center;
 }
