@@ -3,8 +3,14 @@
     padding: 0;
 }
 
+ul{
+    float: none;
+    list-style: none;
+}
+
 ul li
 {
+    border: solid 2px;
     list-style: none;
     display: inline;
     white-space: nowrap;
@@ -34,13 +40,13 @@ ul, ul li{
     text-align: center;
     border: solid 2px;
     border-color: black;
-    float: left;
     white-space: nowrap;
     font-size: 20px;
     height: 10%;
 }
 
 nav{
+    text-align: center;
     height: 10%;
     margin-bottom: 50px;
 }
