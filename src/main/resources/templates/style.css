@@ -2,7 +2,6 @@
     margin: 0;
     padding: 0;
 }
-
 nav{ /* Blok nawigacyjny menu */
     text-align: center;
     height: 10%;
@@ -14,7 +13,6 @@ nav ul{ /* Blok listy menu */
     display: inline-block;
     border: none;
 }
-
 nav ul li /* Element listy w menu */
 {
     list-style: none;
@@ -24,18 +22,15 @@ nav ul li /* Element listy w menu */
     font-size: 20px;
     margin: 0 10px;
 }
-
 nav ul li a{ /* Link do strony w menu */
     border: 5px solid coral;
     border-radius: 10px;
     padding: 6px 20px;
     background-color: lightcoral;
 }
-
 nav ul li a:hover { /* Po najechaniu na przycisk w panelu nav powinnien zmienić kolor */
     color: red;
 }
-
 ul a:link, ul a:visited /* Nie widać odwiedzonych linków */
 {
     list-style: none;
@@ -44,7 +39,6 @@ ul a:link, ul a:visited /* Nie widać odwiedzonych linków */
     color: black;
     padding: 4px;
 }
-
 .zalogujButton{ /* Przycisk zaloguj */
     display: block;
     float: right;
@@ -58,38 +52,50 @@ ul a:link, ul a:visited /* Nie widać odwiedzonych linków */
     font-family: Arial;
     border-radius: 10px;
 }
-
 a.zalogujButton:hover{ /* Przycisk zaloguj po najechaniu na niego */
     background-color: darkred;
     color: white;
 }
-
-.logowanie{ /* Formularz logowania*/
+.logowanie, .rejestracja{ /* Formularz logowania*/
     display: flex;
     flex-direction: column;
     text-align: left;
-    align: left;
 }
-.rejestracja{ /* Formularz rejestracji */
+.logowanie button, .rejestracja button{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 10px;
+    width: 80px;
+    height: 20px;
+    border-radius: 10px;
+    border: solid 2px mediumvioletred;
+    background-color: white;
+}
+.logowanie button:hover, .rejestracja button:hover{
+    background-color: violet;
+    color: black;
+}
+/*.rejestracja{ /* Formularz rejestracji
     display: flex;
     flex-direction: column;
     text-align: left;
-    align: left;
+} */
+.regChk{ /* Checkbox w formularzu rejestracji */
+    display: inline;
+    margin-top: 10px;
 }
-
 a.regChk{ /* "Zapoznałem/łam się z regulaminem" */
     text-decoration: none;
     color: mediumvioletred;
 }
-
 div input{
     display: block;
+    border-radius: 5px;
 }
-
 .kontakt{
     display: block;
 }
-
 iframe{ /* Mapa Google */
     align-content: center;
 }
@@ -100,8 +106,10 @@ iframe{ /* Mapa Google */
     position: relative;
     overflow: hidden;
 }
-
 .slajd{
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
     display: none;
     position: relative;
     margin: auto;
@@ -114,7 +122,6 @@ iframe{ /* Mapa Google */
     from {opacity: .4}
     to {opacity: 1}
 }
-
 .opisImg{
     color: #420909;
     font-size: 15px;
@@ -137,7 +144,34 @@ iframe{ /* Mapa Google */
     display: inline-block;
     transition: background-color 0.6s ease;
 }
-
 .kropka.active {
     background-color: #420909;
+}
+.wyszukajPasek{
+    width: 500px;
+    height: 30px;
+    border-radius: 30px;
+    border-color: black;
+}
+input.wyszukajPasek[type="text"]{
+    margin-left: 30px;
+}
+.wyszukiwarka{
+    align-content: center;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 50px;
+}
+.szukajButton{
+    height: 30px;
+    border-radius: 30px;
+    border-color: black;
+    font-size: 14px;
+    text-align: center;
+    width: 128px;
+    background-image: url("assets/lupa.png");
+    background-repeat: no-repeat;
+    background-position: left;
+    background-size: contain;
 }
