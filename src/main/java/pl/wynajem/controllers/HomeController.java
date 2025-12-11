@@ -1,4 +1,4 @@
-package pl.wynajem.controller;
+package pl.wynajem.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

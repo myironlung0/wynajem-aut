@@ -1,0 +1,13 @@
+CREATE TABLE `samochod` (
+  `id_samochodu` int NOT NULL AUTO_INCREMENT,
+  `marka` varchar(45) NOT NULL,
+  `model` varchar(45) NOT NULL,
+  `nr_VIN` varchar(17) NOT NULL,
+  `przebieg` int(11) NOT NULL,
+  `cena` int(11) NOT NULL,
+  PRIMARY KEY (`id_samochodu`),
+  UNIQUE INDEX `nr_VIN_UNIQUE` (`nr_VIN`),
+  INDEX `idx_samochod_cena` (`cena`), -- do filtrowania po cenie
+  INDEX `idx_samochod_marka_model` (`marka`, `model`),
+  INDEX `idx_samochod_przebieg` (`przebieg`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
