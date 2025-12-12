@@ -4,7 +4,7 @@ CREATE TABLE `uzytkownik` (
   `nazwisko` varchar(50) NOT NULL,
   `adres` varchar(100) DEFAULT NULL,
   `miejscowosc` varchar(50) DEFAULT NULL,
-  `nr_telefonu` int(9) DEFAULT NULL,
+  `nr_tel` int(9) DEFAULT NULL,
   `email` varchar(100) NOT NULL UNIQUE,
   `nr_dowodu` varchar(9) DEFAULT NULL,
   `data_ur` date DEFAULT NULL,
