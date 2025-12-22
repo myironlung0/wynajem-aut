@@ -1,11 +1,11 @@
 CREATE TABLE `samochod` (
-  `id_samochodu` int NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `marka` varchar(45) NOT NULL,
   `model` varchar(45) NOT NULL,
   `nr_VIN` varchar(17) NOT NULL,
   `przebieg` int NOT NULL,
   `cena` decimal(10,2) NOT NULL, -- 10 cyfr, 2 miejsca po przecinku
-  PRIMARY KEY (`id_samochodu`),
+  PRIMARY KEY (`id`),
   UNIQUE INDEX `nr_VIN_UNIQUE` (`nr_VIN`),
   INDEX `idx_samochod_cena` (`cena`), -- do filtrowania po cenie
   INDEX `idx_samochod_marka_model` (`marka`, `model`),

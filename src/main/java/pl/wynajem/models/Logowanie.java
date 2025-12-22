@@ -9,8 +9,7 @@ public class Logowanie {
     // constructors
     public Logowanie() {}
 
-    public Logowanie(int id, int idUzytkownika, String nazwaUzytkownika, String hasloHash) {
-        this.id = id;
+    public Logowanie( int idUzytkownika, String nazwaUzytkownika, String hasloHash) {
         this.idUzytkownika = idUzytkownika;
         this.nazwaUzytkownika = nazwaUzytkownika;
         this.hasloHash = hasloHash;
