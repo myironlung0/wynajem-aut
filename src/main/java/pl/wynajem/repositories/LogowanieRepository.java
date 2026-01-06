@@ -64,11 +64,10 @@ public class LogowanieRepository {
             throw new RuntimeException("Uzytkownik juz istnieje.");
         }
 
-        String sql = "INSERT INTO logowanie(id, id_uzytkownika, nazwa_uzytkownika, haslo_hash) " +
+        String sql = "INSERT INTO logowanie(id_uzytkownika, nazwa_uzytkownika, haslo_hash) " +
                 "VALUES (?, ?, ?, ?)";
 
         jdbcTemplate.update(sql,
-                logowanie.getId(),
                 logowanie.getIdUzytkownika(),
                 logowanie.getNazwaUzytkownika(),
                 logowanie.getHasloHash()

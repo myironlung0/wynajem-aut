@@ -17,6 +17,7 @@ public class SamochodRepository {
     private JdbcTemplate jdbcTemplate;
 
     private RowMapper<Samochod> rowMapper = new RowMapper<Samochod>(){
+        @Override
         public Samochod mapRow(ResultSet rs, int rowNum) throws SQLException {
             Samochod samochod = new Samochod();
             samochod.setId(rs.getInt("id"));
@@ -36,43 +37,31 @@ public class SamochodRepository {
 
     public Samochod findById(int id) {
         try{
-            return jdbcTemplate.queryForObject("SELECT * FROM Samochod WHERE id = ?", rowMapper, id);
+            return jdbcTemplate.queryForObject("SELECT * FROM samochod WHERE id = ?", rowMapper, id);
         }catch(Exception e){
             return null;
         }
     }
 
     public List<Samochod> findByMarka(String marka) {
-        try{
-            return jdbcTemplate.query("SELECT * FROM samochod WHERE marka = ?", rowMapper, marka);
-        }catch(Exception e){
-            return null;
-        }
+        return jdbcTemplate.query("SELECT * FROM samochod WHERE marka = ?", rowMapper, marka);
+
     }
 
 
     public List<Samochod> findByMarkaModel(String marka, String model) {
-        try{
-            return jdbcTemplate.query("SELECT * FROM Samochod WHERE marka = ? AND model = ?", rowMapper, marka, model);
-        }catch(Exception e){
-            return null;
-        }
+
+        return jdbcTemplate.query("SELECT * FROM samochod WHERE marka = ? AND model = ?", rowMapper, marka, model);
+
     }
 
     public List<Samochod> findCheaperThan(BigDecimal max) {
-        try{
-            return jdbcTemplate.query("SELECT * FROM Samochod WHERE cena <= ?", rowMapper, max);
-        }catch(Exception e){
-            return null;
-        }
+        return jdbcTemplate.query("SELECT * FROM samochod WHERE cena <= ?", rowMapper, max);
+
     }
 
-    public List<Samochod> findCheaperThan(BigDecimal min, BigDecimal max) {
-        try{
-            return jdbcTemplate.query("SELECT * FROM Samochod WHERE cena<= ? AND cena>= ?", rowMapper, max, min);
-        }catch(Exception e){
-            return null;
-        }
+    public List<Samochod> findCenaInRange(BigDecimal min, BigDecimal max) {
+        return jdbcTemplate.query("SELECT * FROM samochod WHERE cena<= ? AND cena>= ?", rowMapper, max, min);
     }
 
     public void create(Samochod samochod) {

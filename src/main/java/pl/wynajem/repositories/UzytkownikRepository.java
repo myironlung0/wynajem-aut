@@ -40,12 +40,12 @@ public class UzytkownikRepository {
 
     // METHODS
     public List<Uzytkownik> findAll(){
-        return jdbcTemplate.query("select * from Uzytkownik ORDER BY nazwisko, imie", rowMapper);
+        return jdbcTemplate.query("select * from uzytkownik ORDER BY nazwisko, imie", rowMapper);
     }
 
     public Uzytkownik findById(int id){
         try {
-            return jdbcTemplate.queryForObject("select * from Uzytkownik where id = ?", rowMapper, id);
+            return jdbcTemplate.queryForObject("select * from uzytkownik where id = ?", rowMapper, id);
         } catch (Exception e) {
             return null; // jesli nic nie znajdzie
         }
@@ -53,7 +53,7 @@ public class UzytkownikRepository {
 
     public Uzytkownik findByImie(String imie){
         try {
-            return jdbcTemplate.queryForObject("select * from Uzytkownik where imie = ?", rowMapper, imie);
+            return jdbcTemplate.queryForObject("select * from uzytkownik where imie = ?", rowMapper, imie);
         } catch (Exception e) {
             return null;
         }
@@ -61,7 +61,7 @@ public class UzytkownikRepository {
 
     public Uzytkownik findByNazwisko(String nazwisko) {
         try {
-            return jdbcTemplate.queryForObject("select * from Uzytkownik where nazwisko = ?", rowMapper, nazwisko);
+            return jdbcTemplate.queryForObject("select * from uzytkownik where nazwisko = ?", rowMapper, nazwisko);
         } catch (Exception e) {
             return null;
         }
@@ -70,7 +70,7 @@ public class UzytkownikRepository {
     // wyszukaj po emailu, dodaj uzytkownika, sprawdz czy mail/telefon istnieje
     public Uzytkownik findByEmail(String email){
         try {
-            return jdbcTemplate.queryForObject("select * from Uzytkownik where email = ?", rowMapper, email);
+            return jdbcTemplate.queryForObject("select * from uzytkownik where email = ?", rowMapper, email);
         }catch (Exception e){
             return null;
         }

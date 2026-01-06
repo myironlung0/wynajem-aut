@@ -2,15 +2,15 @@ package pl.wynajem.models;
 
 import java.time.LocalDate;
 
-public class Platnosci {
+public class Platnosc {
     private int id;
     private int idUzytkownika;
     private String czyZrealizowano;
     private LocalDate dataPlatnosci;
 
-    public Platnosci() {}
+    public Platnosc() {}
 
-    public Platnosci(int idUzytkownika, String czyZrealizowano, LocalDate dataPlatnosci) {
+    public Platnosc(int idUzytkownika, String czyZrealizowano, LocalDate dataPlatnosci) {
         this.idUzytkownika = idUzytkownika;
         this.czyZrealizowano = czyZrealizowano;
         this.dataPlatnosci = dataPlatnosci;
