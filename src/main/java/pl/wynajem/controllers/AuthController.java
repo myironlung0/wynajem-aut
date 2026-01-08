@@ -43,7 +43,7 @@ public class AuthController {
         return "redirect:/login";
     }
 
-    @PostMapping("/register")
+    @PostMapping("/register") //obsluz POST request register
     public String registerSubmit(@RequestParam String login, @RequestParam String email, @RequestParam String password, @RequestParam String confirmPassword,
                                  @RequestParam String imie, @RequestParam String nazwisko, @RequestParam String adres, @RequestParam String miejscowosc,
                                  @RequestParam int nrTel, @RequestParam String nrDowodu, @RequestParam LocalDate dataUr, Model model){

@@ -9,10 +9,7 @@ import pl.wynajem.repositories.UzytkownikRepository;
 
 @SpringBootApplication
 public class WynajemAutApplication {
-
-    @Autowired
-    private static UzytkownikRepository uzytkownikRepository;
-
+    
 	public static void main(String[] args) {
 		SpringApplication.run(WynajemAutApplication.class, args);
 	}

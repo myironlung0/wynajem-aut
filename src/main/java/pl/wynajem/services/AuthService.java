@@ -1,6 +1,8 @@
 package pl.wynajem.services;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.wynajem.config.SecurityConfig;
 import pl.wynajem.models.Logowanie;
 import pl.wynajem.models.Uzytkownik;
 import pl.wynajem.repositories.LogowanieRepository;
@@ -12,10 +14,12 @@ import java.time.LocalDate;
 public class AuthService {
     private final LogowanieRepository logowanieRepository;
     private final UzytkownikRepository uzytkownikRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public AuthService(LogowanieRepository logowanieRepository, UzytkownikRepository uzytkownikRepository) {
+    public AuthService(LogowanieRepository logowanieRepository, UzytkownikRepository uzytkownikRepository, PasswordEncoder passwordEncoder) {
         this.logowanieRepository = logowanieRepository;
         this.uzytkownikRepository = uzytkownikRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public Uzytkownik login(String login, String haslo) {
@@ -26,8 +30,13 @@ public class AuthService {
             throw new RuntimeException("Nieprawidlowy login");
         }
 
-        // NA RAZIE plain text
-        if (!logowanie.getHasloHash().equals(haslo)) {
+//        // NA RAZIE plain text
+//        if (!logowanie.getHasloHash().equals(haslo)) {
+//            throw new RuntimeException("Nieprawidlowe haslo");
+//        }
+
+        // sprawdzanie hasla
+        if(!passwordEncoder.matches(haslo, logowanie.getHasloHash())) {
             throw new RuntimeException("Nieprawidlowe haslo");
         }
 
@@ -76,7 +85,8 @@ public class AuthService {
         Logowanie log = new Logowanie();
         log.setIdUzytkownika(uzytkownik.getId());
         log.setNazwaUzytkownika(login);
-        log.setHasloHash(password); // na razie plain text
+        String hashedPassword = passwordEncoder.encode(password);
+        log.setHasloHash(hashedPassword);
         logowanieRepository.create(log);
     }
 }
