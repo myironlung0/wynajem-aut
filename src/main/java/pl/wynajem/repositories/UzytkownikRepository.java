@@ -2,12 +2,16 @@ package pl.wynajem.repositories;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import pl.wynajem.models.Uzytkownik;
 import org.springframework.jdbc.core.RowMapper;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 @Repository
@@ -87,18 +91,24 @@ public class UzytkownikRepository {
 
         String sql = "INSERT INTO uzytkownik (imie, nazwisko, adres, miejscowosc, nr_tel, email, nr_dowodu, data_ur, czy_zweryfikowany) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        KeyHolder keyHolder = new GeneratedKeyHolder();
 
-        jdbcTemplate.update(sql,
-                uzytkownik.getImie(),
-                uzytkownik.getNazwisko(),
-                uzytkownik.getAdres(),
-                uzytkownik.getMiejscowosc(),
-                uzytkownik.getNrTel(),
-                uzytkownik.getEmail(),
-                uzytkownik.getNrDowodu(),
-                uzytkownik.getDataUr(),
-                uzytkownik.getCzyZweryfikowany()
-        );
+        jdbcTemplate.update(connection -> {
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, uzytkownik.getImie());
+            ps.setString(2, uzytkownik.getNazwisko());
+            ps.setString(3, uzytkownik.getAdres());
+            ps.setString(4, uzytkownik.getMiejscowosc());
+            ps.setInt(5, uzytkownik.getNrTel());
+            ps.setString(6, uzytkownik.getEmail());
+            ps.setString(7, uzytkownik.getNrDowodu());
+            ps.setObject(8, uzytkownik.getDataUr());
+            ps.setString(9, uzytkownik.getCzyZweryfikowany());
+            return ps;
+        }, keyHolder);
+
+        // teraz ID użytkownika jest ustawione poprawnie
+        uzytkownik.setId(keyHolder.getKey().intValue());
     }
 
     public void delete(int id){

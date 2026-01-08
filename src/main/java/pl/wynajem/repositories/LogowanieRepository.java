@@ -65,7 +65,7 @@ public class LogowanieRepository {
         }
 
         String sql = "INSERT INTO logowanie(id_uzytkownika, nazwa_uzytkownika, haslo_hash) " +
-                "VALUES (?, ?, ?, ?)";
+                "VALUES (?, ?, ?)";
 
         jdbcTemplate.update(sql,
                 logowanie.getIdUzytkownika(),

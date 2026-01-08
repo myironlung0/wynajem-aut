@@ -9,17 +9,17 @@
 <body>
 <header>
     <h1>WYNAJEM SAMOCHODOW - witaj </h1>
-    <ul><li><a href="logowanie.html" class="zalogujButton">Zaloguj</a></li></ul>
+    <ul><li><a href="login" class="zalogujButton">Zaloguj</a></li></ul>
 </header>
 <nav>
     <ul>
-        <li><a href="glowna.html">Home</a></li>
-        <li><a href="wyszukaj.html">Oferta</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-        <li><a href="onas.html">O nas</a></li>
+        <li><a href="glowna">Home</a></li>
+        <li><a href="wyszukaj">Oferta</a></li>
+        <li><a href="kontakt">Kontakt</a></li>
+        <li><a href="onas">O nas</a></li>
     </ul>
 </nav>
-<div class="logowanie">
+<div class="login">
     <h2>Zaloguj się</h2>
     <!-- /login powinien sie wywoływać z javy i w javie powinna być waldacja z bazą -->
     <form action="/login" method="post">
@@ -38,6 +38,7 @@
     <form action="/register" method="post">
         <label>Login:</label>
         <input type="text" name="login" required>
+
         <label>Email:</label>
         <input type="email" name="email" required>
 
@@ -46,6 +47,27 @@
 
         <label>Powtórz hasło:</label>
         <input type="password" name="confirmPassword" required>
+
+        <label>Imię:</label>
+        <input type="text" name="imie" required>
+
+        <label>Nazwisko:</label>
+        <input type="text" name="nazwisko" required>
+
+        <label>Adres:</label>
+        <input type="text" name="adres" required>
+
+        <label>Miejscowość:</label>
+        <input type="text" name="miejscowosc" required>
+
+        <label>Nr telefonu:</label>
+        <input type="number" name="nrTel" required>
+
+        <label>Nr dowodu:</label>
+        <input type="text" name="nrDowodu" required>
+
+        <label>Data urodzenia:</label>
+        <input type="date" name="dataUr" required>
 
         <input type="checkbox" class="regChk" name="reg" required>
         <label>Zapoznałem/łam się z <a class="regChk" href="regulamin" target="_blank">regulaminem</a>.</label>

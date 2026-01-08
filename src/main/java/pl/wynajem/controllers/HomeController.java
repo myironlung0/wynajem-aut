@@ -43,11 +43,11 @@ public class HomeController {
         return "kontakt";
     }
 
-    // logowanie
-    @RequestMapping("/logowanie")
-    public String logowanie() {
-        return "logowanie";
-    }
+//    // logowanie przeniesione do AuthController
+//    @RequestMapping("/login")
+//    public String login() {
+//        return "login";
+//    }
 
     //testowa   `
     @RequestMapping("/test")
