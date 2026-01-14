@@ -12,12 +12,6 @@ public class HomeController {
         return "redirect:/glowna.html";
     }
 
-    //formularz wyszukiwania aut
-    @RequestMapping("/wyszukaj")
-    public String formularzWyszukiwania() {
-        return "redirect:/wyszukaj.html";
-    }
-
     // wyniki wyszukiwania
     @RequestMapping("/wyniki")
     public String wynikiWyszukiwania() {

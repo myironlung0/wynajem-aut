@@ -33,41 +33,26 @@ document.addEventListener('DOMContentLoaded', function() {
             // KROK 3: Pokazujemy/ukrywamy elementy w zależności od stanu sesji
             // --------------------------------------------------------------------
             if (data.zalogowany) {
-                // Użytkownik JEST zalogowany:
-
-                // Ukrywamy przycisk "Zaloguj" (display: none = element niewidoczny)
+                // display: none = element niewidoczny
                 if (przyciskZaloguj) przyciskZaloguj.style.display = 'none';
-
-                // Pokazujemy przycisk "Wyloguj" (display: block/inline = widoczny)
                 if (przyciskWyloguj) przyciskWyloguj.style.display = 'inline-block';
+                if (przyciskPanel) przyciskPanel.style.display = 'inline-block';    // przycisk moje konto
 
-                // Pokazujemy przycisk "Moje konto" (panel użytkownika)
-                if (przyciskPanel) przyciskPanel.style.display = 'inline-block';
-
-                // Opcjonalnie: wyświetlamy imię użytkownika
+                // wysiwetl imie uzytkownika
                 if (witajText && data.imie) {
                     witajText.textContent = 'Witaj, ' + data.imie + '!';
                     witajText.style.display = 'inline';
                 }
 
             } else {
-                // Użytkownik NIE jest zalogowany:
-
-                // Pokazujemy przycisk "Zaloguj"
                 if (przyciskZaloguj) przyciskZaloguj.style.display = 'inline-block';
-
-                // Ukrywamy przycisk "Wyloguj"
                 if (przyciskWyloguj) przyciskWyloguj.style.display = 'none';
-
-                // Ukrywamy przycisk "Moje konto"
                 if (przyciskPanel) przyciskPanel.style.display = 'none';
 
-                // Ukrywamy powitanie
                 if (witajText) witajText.style.display = 'none';
             }
         })
-        .catch(function(error) {
-            // .catch() wykonuje się gdy wystąpi błąd (np. serwer niedostępny)
+        .catch(function(error) {    // jak wystapi blad
             console.error('Błąd sprawdzania sesji:', error);
 
             // W razie błędu - domyślnie pokazujemy przycisk logowania
