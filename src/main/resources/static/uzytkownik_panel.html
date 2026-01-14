@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Panel użytkownika</title>
+</head>
+<body>
+<header>
+    <h1>WYNAJEM SAMOCHODÓW - Panel użytkownika</h1>
+    <ul><li><a href="/logout" class="zalogujButton">Wyloguj</a></li></ul>
+</header>
+<nav>
+    <ul>
+        <li><a href="glowna.html">Home</a></li>
+        <li><a href="wyszukaj.html">Oferta</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="onas.html">O nas</a></li>
+    </ul>
+</nav>
+<div class="uzytkownik_panel">
+    <h2>Twoje dane</h2>
+    <form action="/uzytkownik_panel/update" method="post">
+        <label>Imię: *</label>
+        <input type="text" name="imie" id="imie" required>
+
+        <label>Nazwisko: *</label>
+        <input type="text" name="nazwisko" id="nazwisko" required>
+
+        <label>Nr telefonu: *</label>
+        <input type="number" name="nrTel" id="nrTel" required>
+
+        <label>Adres:</label>
+        <input type="text" name="adres" id="adres">
+
+        <label>Miejscowość:</label>
+        <input type="text" name="miejscowosc" id="miejscowosc">
+
+        <label>Nr dowodu:</label>
+        <input type="text" name="nrDowodu" id="nrDowodu">
+
+        <button type="submit">Zapisz zmiany</button>
+    </form>
+</div>
+</body>
+</html>

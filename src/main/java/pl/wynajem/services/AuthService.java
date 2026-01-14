@@ -30,11 +30,6 @@ public class AuthService {
             throw new RuntimeException("Nieprawidlowy login");
         }
 
-//        // NA RAZIE plain text
-//        if (!logowanie.getHasloHash().equals(haslo)) {
-//            throw new RuntimeException("Nieprawidlowe haslo");
-//        }
-
         // sprawdzanie hasla
         if(!passwordEncoder.matches(haslo, logowanie.getHasloHash())) {
             throw new RuntimeException("Nieprawidlowe haslo");
@@ -61,15 +56,6 @@ public class AuthService {
 
         // nowyu uzytkwonik
         Uzytkownik uzytkownik = new Uzytkownik();
-//        uzytkownik.setImie("Imię"); // placeholder
-//
-//        uzytkownik.setNazwisko("Nazwisko"); // placeholder
-//        uzytkownik.setNrTel(123456789); // placeholder
-//        uzytkownik.setAdres("Adres");
-//        uzytkownik.setMiejscowosc("Miasto");
-//        uzytkownik.setNrDowodu("ABC123456");
-//        uzytkownik.setDataUr(java.time.LocalDate.of(2000, 1, 1));
-//        uzytkownik.setCzyZweryfikowany("N");
         uzytkownik.setImie(name);
         uzytkownik.setNazwisko(surname);
         uzytkownik.setNrTel(phoneNum);
@@ -88,5 +74,24 @@ public class AuthService {
         String hashedPassword = passwordEncoder.encode(password);
         log.setHasloHash(hashedPassword);
         logowanieRepository.create(log);
+    }
+
+    public Uzytkownik updateProfile(int userId, String imie, String nazwisko,
+                                    int nrTel, String adres, String miejscowosc, String nrDowodu) {
+
+        Uzytkownik user = uzytkownikRepository.findById(userId);
+        if (user == null) {
+            throw new RuntimeException("Użytkownik nie istnieje");
+        }
+
+        user.setImie(imie);
+        user.setNazwisko(nazwisko);
+        user.setNrTel(nrTel);
+        user.setAdres(adres);
+        user.setMiejscowosc(miejscowosc);
+        user.setNrDowodu(nrDowodu);
+
+        uzytkownikRepository.update(user);
+        return user;
     }
 }
