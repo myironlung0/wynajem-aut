@@ -43,7 +43,7 @@ public class AuthController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
-        return "redirect:/login";
+        return "redirect:/login.html";
     }
 
     @PostMapping("/register") //obsluz POST request register
@@ -53,7 +53,7 @@ public class AuthController {
         // czy hasla sie zgadzaja
         if (!password.equals(confirmPassword)) {
             session.setAttribute("error", "Hasła nie są takie same");
-            return "login"; // powrot
+            return "redirect:/login.html"; // powrot
         }
 
         try {
