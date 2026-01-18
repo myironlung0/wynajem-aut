@@ -9,7 +9,17 @@
 <body>
 <header>
     <h1>WYNAJEM SAMOCHODÓW - Panel użytkownika</h1>
-    <ul><li><a href="/logout" class="zalogujButton">Wyloguj</a></li></ul>
+    <span id="witaj-tekst">witaj</span>
+    <ul>
+        <!-- Przycisk PANEL UZYTKOWNIKA- widoczny tylko dla zalogowanych -->
+        <li><a href="/uzytkownik_panel" id="btn-panel" class="zalogujButton hidden">Moje konto</a></li>
+
+        <!-- Przycisk WYLOGUJ - widoczny tylko dla zalogowanych -->
+        <li><a href="/logout" id="btn-wyloguj" class="zalogujButton hidden">Wyloguj</a></li>
+
+        <!-- Przycisk ZALOGUJ - widoczny tylko dla niezalogowanych -->
+        <li><a href="/login" id="btn-zaloguj" class="zalogujButton">Zaloguj</a></li>
+    </ul>
 </header>
 <nav>
     <ul>
@@ -43,5 +53,6 @@
         <button type="submit">Zapisz zmiany</button>
     </form>
 </div>
+<script src="/js/session-handler.js"></script>
 </body>
 </html>
