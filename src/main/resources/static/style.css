@@ -2,6 +2,21 @@
     margin: 0;
     padding: 0;
 }
+body{  /* Styl całej strony */
+    font-family: 'Poppins', sans-serif;
+    background-color: #fff5f5;
+    color: #420909;
+}
+header{ /* Nagłówek strony */
+    background-color: #ffdcdc;
+    border-bottom: 4px solid #8B0000;
+    margin-bottom: 10px;
+}
+header h1 { /* WYNAJEM SAMOCHODÓW */
+    text-align: center;
+    padding: 20px;
+    color: #8B0000;
+}
 nav{ /* Blok nawigacyjny menu */
     text-align: center;
     height: 10%;
@@ -21,15 +36,20 @@ nav ul li /* Element listy w menu */
     white-space: nowrap;
     font-size: 20px;
     margin: 0 10px;
+    transition: all 0.3s ease;
 }
 nav ul li a{ /* Link do strony w menu */
-    border: 5px solid coral;
+    border: 2px solid coral;
     border-radius: 10px;
-    padding: 6px 20px;
-    background-color: lightcoral;
+    padding: 8px 20px;
+    background-color: #ff6f61;
+    color: white;
+    transition: all 0.3s ease;
 }
 nav ul li a:hover { /* Po najechaniu na przycisk w panelu nav powinnien zmienić kolor */
-    color: red;
+    background-color: #8b0000;
+    color: #ffdcdc;
+    transform: scale(1.05);
 }
 ul a:link, ul a:visited /* Nie widać odwiedzonych linków */
 {
@@ -42,69 +62,113 @@ ul a:link, ul a:visited /* Nie widać odwiedzonych linków */
 .zalogujButton{ /* Przycisk zaloguj */
     display: block;
     float: right;
-    border: solid 5px;
-    border-color: darkred;
-    background-color: #bf2c2c;
+    border: solid 2px #8b0000;
+    background-color: #ff6f61;
+    color: white;
+    transition: all 0.3s ease;
     margin: 5px;
     text-decoration: none;
     font-size: 20px;
     text-align: center;
-    font-family: Arial;
     border-radius: 10px;
+}
+.zalogujButton hidden{
+    display: none;
 }
 a.zalogujButton:hover{ /* Przycisk zaloguj po najechaniu na niego */
-    background-color: darkred;
-    color: white;
+    background-color: #8b0000;
+    color: #ffdcdc;
+    transform: scale(1.05);
 }
-.logowanie, .rejestracja{ /* Formularz logowania*/
+.loginPage{
     display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-.logowanie button, .rejestracja button{
-    display: flex;
+    gap: 40px;
     justify-content: center;
+    padding: 50px 20px;
+    flex-wrap: wrap;
+}
+.login, .rejestracja{ /* Formularz logowania*/
+    flex: 1 1 400px;
+    max-width: 500px;
+    background-color: #ffdcdc;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+.login h2, .rejestracja h2 {
+    color: #8b0000;
     text-align: center;
-    margin-top: 10px;
-    width: 80px;
-    height: 20px;
-    border-radius: 10px;
-    border: solid 2px mediumvioletred;
-    background-color: white;
+    margin-bottom: 20px;
 }
-.logowanie button:hover, .rejestracja button:hover{
-    background-color: violet;
-    color: black;
-}
-/*.rejestracja{ /* Formularz rejestracji
+.login form, .rejestracja from{
     display: flex;
     flex-direction: column;
-    text-align: left;
-} */
+    align-items: flex-start;
+    gap: 10px;
+}
+.login button, .rejestracja button{
+    background-color: #ff6f61;
+    color: white;
+    font-weight: 600;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.login button:hover, .rejestracja button:hover{
+    background-color: #8b0000;
+}
+label{
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+.login input, .rejestracja input{
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
 .regChk{ /* Checkbox w formularzu rejestracji */
     display: inline;
     margin-top: 10px;
 }
 a.regChk{ /* "Zapoznałem/łam się z regulaminem" */
     text-decoration: none;
-    color: mediumvioletred;
-}
-div input{
-    display: block;
-    border-radius: 5px;
+    color: lightcoral;
 }
 .kontakt{
     display: block;
 }
-iframe{ /* Mapa Google */
-    align-content: center;
+.kontakt-container{
+    display: flex;
+    gap: 40px;
+    padding: 40px 20px;
+    flex-wrap: wrap;
+}
+.kontakt-info{
+    flex: 1 1 300px;
+    max-width: 600px;
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.5;
+}
+.kontakt-mapa{
+    flex: 1 1 300px;
+    max-width: 600px;
 }
 .galeria{ /* Galeria zdjęć */
     max-width: 750px;
     width: 80%;
-    margin: auto;
+    margin: 40px auto;
     position: relative;
     overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
 }
 .slajd{
     width: 100%;
@@ -123,11 +187,13 @@ iframe{ /* Mapa Google */
     to {opacity: 1}
 }
 .opisImg{
-    color: #420909;
-    font-size: 15px;
-    padding: 8px 12px;
+    background-color: rgba(139,0,0,0.7);
+    color: #ffdcdc;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 8px;
     position: absolute;
-    bottom: 8px;
+    bottom: 0;
     width: 100%;
     text-align: center;
 }
@@ -139,13 +205,13 @@ iframe{ /* Mapa Google */
     height: 15px;
     width: 15px;
     margin: 0 2px;
-    background-color: #e6b1b1;
+    background-color: #ffdcdc;
     border-radius: 50%;
     display: inline-block;
     transition: background-color 0.6s ease;
 }
 .kropka.active {
-    background-color: #420909;
+    background-color: #8b0000;
 }
 .wyszukajPasek{
     width: 500px;
