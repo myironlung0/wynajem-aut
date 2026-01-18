@@ -24,9 +24,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // KROK 2: Pobieramy elementy HTML które chcemy pokazać/ukryć
             // --------------------------------------------------------------------
             // document.getElementById() szuka elementu po jego atrybucie id=""
-            var przyciskZaloguj = document.getElementById('btn-zaloguj');
-            var przyciskWyloguj = document.getElementById('btn-wyloguj');
-            var przyciskPanel = document.getElementById('btn-panel');
+            const zalogujBtn = document.getElementById('btn-zaloguj');
+            const wylogujBtn = document.getElementById('btn-wyloguj');
+            const panelBtn = document.getElementById('btn-panel');
             var witajText = document.getElementById('witaj-tekst');
 
             // --------------------------------------------------------------------
@@ -34,9 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // --------------------------------------------------------------------
             if (data.zalogowany) {
                 // display: none = element niewidoczny
-                if (przyciskZaloguj) przyciskZaloguj.style.display = 'none';
-                if (przyciskWyloguj) przyciskWyloguj.style.display = 'inline-block';
-                if (przyciskPanel) przyciskPanel.style.display = 'inline-block';    // przycisk moje konto
+                if (zalogujBtn) zalogujBtn.style.display = 'none';
+                if (wylogujBtn) wylogujBtn.style.display = 'inline-block';
+                if (panelBtn) panelBtn.style.display = 'inline-block';    // przycisk moje konto
 
                 // wysiwetl imie uzytkownika
                 if (witajText && data.imie) {
@@ -45,9 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
 
             } else {
-                if (przyciskZaloguj) przyciskZaloguj.style.display = 'inline-block';
-                if (przyciskWyloguj) przyciskWyloguj.style.display = 'none';
-                if (przyciskPanel) przyciskPanel.style.display = 'none';
+                if (zalogujBtn) zalogujBtn.style.display = 'inline-block';
+                if (wylogujBtn) wylogujBtn.style.display = 'none';
+                if (panelBtn) panelBtn.style.display = 'none';
 
                 if (witajText) witajText.style.display = 'none';
             }
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Błąd sprawdzania sesji:', error);
 
             // W razie błędu - domyślnie pokazujemy przycisk logowania
-            var przyciskZaloguj = document.getElementById('btn-zaloguj');
-            if (przyciskZaloguj) przyciskZaloguj.style.display = 'inline-block';
+            const zalogujBtn = document.getElementById('btn-zaloguj');
+            if (zalogujBtn) zalogujBtn.style.display = 'inline-block';
         });
 });
