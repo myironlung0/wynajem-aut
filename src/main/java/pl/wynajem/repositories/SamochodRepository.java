@@ -109,8 +109,18 @@ public class SamochodRepository {
         return count != null && count > 0;
     }
 
+    public List<Samochod> search(String search) {
+        if (search == null || search.isBlank()) {
+            return findAll();
+        }
 
+        String sql = "SELECT * FROM samochod " +
+                "WHERE LOWER(marka) LIKE ? " +
+                "OR LOWER(model) LIKE ? " +
+                "OR LOWER(nr_VIN) LIKE ?";
 
+        String param = "%" + search.toLowerCase() + "%";
 
-
+        return jdbcTemplate.query(sql, rowMapper, param, param, param);
+    }
 }

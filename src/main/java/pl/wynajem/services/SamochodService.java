@@ -46,6 +46,8 @@ public class SamochodService {
         return samochod;
     }
 
+    public List<Samochod> search(String search) {return samochodRepository.search(search);}
+
     public void delete(int id) {
         samochodRepository.delete(id);
     }
