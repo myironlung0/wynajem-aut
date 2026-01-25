@@ -12,6 +12,7 @@ import pl.wynajem.models.Uzytkownik;
 import pl.wynajem.services.RezerwacjaService;
 import pl.wynajem.services.SamochodService;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -137,4 +138,35 @@ public class RezerwacjaController {
         }
         return rezerwacjaService.findByUzytkownikId(user.getId()); // zwroocone w json do obslugi w js
     }
+
+    // do obliczania ceny koncowej
+    @PostMapping("/wycena")
+    @ResponseBody
+    public Map<String, Object> wycena(@RequestParam int samochodId, @RequestParam String dataOd, @RequestParam String dataDo){
+
+        Map<String, Object> response = new HashMap<>();
+
+        Samochod samochod = samochodService.findById(samochodId);
+        if (samochod == null) {
+            response.put("status", "error");
+            response.put("message", "Nie znaleziono samochodu");
+        }
+
+        try{
+            // z string na date parsuje
+            LocalDateTime od = LocalDateTime.parse(dataOd);
+            LocalDateTime do_ = LocalDateTime.parse(dataDo);
+
+            BigDecimal cena = rezerwacjaService.obliczCeneKoncowa(od, do_, samochod.getCena());
+
+            response.put("status", "success");
+            response.put("cenaKoncowa", cena); // dodaje do mapy, ktora pozniej idze jako json
+        }catch(RuntimeException e){
+            response.put("status", "error");
+            response.put("message", e.getMessage());
+        }
+
+        return response;
+    }
 }
+
