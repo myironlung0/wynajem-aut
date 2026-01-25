@@ -13,6 +13,7 @@ import pl.wynajem.services.RezerwacjaService;
 import pl.wynajem.services.SamochodService;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -103,8 +104,8 @@ public class RezerwacjaController {
 
         try {
             Rezerwacja rezerwacja = new Rezerwacja();
-            rezerwacja.setDataOd(LocalDate.parse(dataOd));
-            rezerwacja.setDataDo(LocalDate.parse(dataDo));
+            rezerwacja.setDataOd(LocalDateTime.parse(dataOd));
+            rezerwacja.setDataDo(LocalDateTime.parse(dataDo));
             rezerwacja.setIdSamochodu(samochodId);
             rezerwacja.setIdUzytkownika(user.getId());
             rezerwacja.setEmail(user.getEmail());

@@ -3,9 +3,13 @@ package pl.wynajem.services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.wynajem.models.Rezerwacja;
+import pl.wynajem.models.Samochod;
 import pl.wynajem.models.Uzytkownik;
 import pl.wynajem.repositories.RezerwacjaRepository;
+import pl.wynajem.repositories.SamochodRepository;
 
+import java.math.BigDecimal;
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -16,6 +20,8 @@ import java.util.UUID;
 public class RezerwacjaService {
     @Autowired
     private RezerwacjaRepository rezerwacjaRepository;
+    @Autowired
+    private SamochodRepository samochodRepository;
 
     public void czyZweryfikowany(Uzytkownik user){
         if(user.getCzyZweryfikowany().equals("N")){
@@ -42,18 +48,42 @@ public class RezerwacjaService {
         return "REZ-" + data + "-" + losowy;
     }
 
+    public BigDecimal obliczCeneKoncowa(LocalDateTime dataOd,  LocalDateTime dataDo, BigDecimal cenaZaGodzine){
+        if (dataOd.isAfter(dataDo)) {
+            throw new RuntimeException("Nieprawidłowy zakres dat");
+        }
+
+        long godziny = Duration.between(dataOd, dataDo).toHours();
+
+        if (godziny <= 0) {
+            throw new RuntimeException("Rezerwacja musi trwać co najmniej 1 godzinę");
+        }
+
+        return cenaZaGodzine.multiply(BigDecimal.valueOf(godziny));
+    }
+
     public void create(Rezerwacja rezerwacja) {
         // walidacja dat
         if (rezerwacja.getDataOd().isAfter(rezerwacja.getDataDo())) {
             throw new RuntimeException("Data rozpoczęcia nie może być późniejsza niż data zakończenia");
         }
-        if (rezerwacja.getDataOd().isBefore(LocalDate.now())) {
+        if (rezerwacja.getDataOd().isBefore(LocalDateTime.now())) {
             throw new RuntimeException("Nie można rezerwować w przeszłości");
         }
 
         if (!rezerwacjaRepository.czySamochodWolny(rezerwacja.getIdSamochodu(), rezerwacja.getDataOd(), rezerwacja.getDataDo())) {
             throw new RuntimeException("Samochód jest już zarezerwowany w tym terminie");
         }
+
+        Samochod samochod = samochodRepository.findById(rezerwacja.getIdSamochodu());
+        if (samochod == null) {
+            throw new RuntimeException("Samochód nie istnieje");
+        }
+        BigDecimal cenaZaGodzine = samochod.getCena();
+
+        BigDecimal cenaKoncowa = obliczCeneKoncowa(rezerwacja.getDataOd(), rezerwacja.getDataDo(), cenaZaGodzine);
+
+        rezerwacja.setCenaKoncowa(cenaKoncowa);
 
         // gen numer rezerwacji
         rezerwacja.setNrRezerwacji(generujNrRezerwacji());

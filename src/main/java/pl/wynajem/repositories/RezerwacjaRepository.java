@@ -9,6 +9,7 @@ import pl.wynajem.models.Rezerwacja;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Repository
@@ -21,8 +22,9 @@ public class RezerwacjaRepository {
         public Rezerwacja mapRow(ResultSet rs, int rowNum) throws SQLException {
             Rezerwacja rezerwacja = new Rezerwacja();
             rezerwacja.setId(rs.getInt("id"));
-            rezerwacja.setDataOd((rs.getDate("data_od")).toLocalDate());
-            rezerwacja.setDataDo(rs.getDate("data_do").toLocalDate());
+            rezerwacja.setDataOd(rs.getTimestamp("data_od").toLocalDateTime());
+            rezerwacja.setDataDo(rs.getTimestamp("data_do").toLocalDateTime());
+            rezerwacja.setCenaKoncowa(rs.getBigDecimal("cena_koncowa"));
             rezerwacja.setNrTel(rs.getInt("nr_tel"));
             rezerwacja.setEmail(rs.getString("email"));
             rezerwacja.setIdUzytkownika(rs.getInt("id_uzytkownika"));
@@ -76,6 +78,7 @@ public class RezerwacjaRepository {
                 rowMapper, dataOd, dataDo);
     }
 
+
     public void updateStatus(int rezerwacjaId, String nowyStatus) {
         String sql = "UPDATE rezerwacja SET status = ? WHERE id = ?";
         jdbcTemplate.update(sql, nowyStatus, rezerwacjaId);
@@ -88,7 +91,7 @@ public class RezerwacjaRepository {
         return count != null && count > 0;
     }
 
-    public boolean czySamochodWolny(int idSamochodu, LocalDate dataOd, LocalDate dataDo){
+    public boolean czySamochodWolny(int idSamochodu, LocalDateTime dataOd, LocalDateTime dataDo){
         String sql = "SELECT COUNT(*) FROM rezerwacja WHERE id_samochodu = ? " +
                 "AND status IN ('potwierdzona', 'w_trakcie') AND data_od <= ? AND data_do >= ?";
         // queryForObject moze zwrocic null, a int nie moze byc null
@@ -101,10 +104,13 @@ public class RezerwacjaRepository {
             throw new RuntimeException("Rezerwacja z tym numerem juz istnieje");
         }
 
-        String sql = "INSERT INTO rezerwacja (data_od, data_do, nr_tel, email, id_uzytkownika, id_samochodu, nr_rezerwacji, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO rezerwacja (data_od, data_do, cena_koncowa, nr_tel, email, id_uzytkownika, " +
+                "id_samochodu, nr_rezerwacji, status) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql,
                 rezerwacja.getDataOd(),
                 rezerwacja.getDataDo(),
+                rezerwacja.getCenaKoncowa(),
                 rezerwacja.getNrTel(),
                 rezerwacja.getEmail(),
                 rezerwacja.getIdUzytkownika(),
@@ -115,12 +121,13 @@ public class RezerwacjaRepository {
     }
 
     public void update(Rezerwacja rezerwacja){
-        String sql = "UPDATE rezerwacja SET data_od = ?, data_do = ?, nr_tel = ?, email = ?, " +
+        String sql = "UPDATE rezerwacja SET data_od = ?, data_do = ?, cena_koncowa = ?, nr_tel = ?, email = ?, " +
                 "id_uzytkownika = ?, id_samochodu = ?, nr_rezerwacji = ?, status = ? WHERE id = ?";
 
         jdbcTemplate.update(sql,
                 rezerwacja.getDataOd(),
                 rezerwacja.getDataDo(),
+                rezerwacja.getCenaKoncowa(),
                 rezerwacja.getNrTel(),
                 rezerwacja.getEmail(),
                 rezerwacja.getIdUzytkownika(),
