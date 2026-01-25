@@ -1,0 +1,32 @@
+<!-- PROSTE WYSWIETLANIE AUT uzytwkonika -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Moje rezerwacje</title>
+</head>
+<body>
+<h1>Moje rezerwacje</h1>
+<ul id="lista-rezerwacji"></ul>
+
+<script>
+    // fetchujemy dane z backendu
+    fetch('/rezerwacje/moje')
+        .then(response => {
+            if (!response.ok) throw new Error("Nie jesteś zalogowany");
+            return response.json();
+        })
+        .then(data => {
+            const ul = document.getElementById('lista-rezerwacji');
+            data.forEach(r => {
+                const li = document.createElement('li');
+                li.textContent = `Samochód: ${r.idSamochodu}, Od: ${r.dataOd}, Do: ${r.dataDo}`;
+                ul.appendChild(li);
+            });
+        })
+        .catch(err => {
+            alert(err.message);
+        });
+</script>
+</body>
+</html>
