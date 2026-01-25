@@ -60,7 +60,7 @@ public class AuthController {
         }
 
         try {
-            // tworzenie uzytkownika i login w vazie
+            // tworzenie uzytkownika i login w bazie
             authService.register(login, email, password, imie, nazwisko, nrTel, adres, miejscowosc, nrDowodu, dataUr, "N");
 
             session.setAttribute("success", "Rejestracja zakończona. Możesz się zalogować.");

@@ -76,22 +76,22 @@ public class AuthService {
         logowanieRepository.create(log);
     }
 
-    public Uzytkownik updateProfile(int userId, String imie, String nazwisko,
-                                    int nrTel, String adres, String miejscowosc, String nrDowodu) {
-
-        Uzytkownik user = uzytkownikRepository.findById(userId);
-        if (user == null) {
-            throw new RuntimeException("Użytkownik nie istnieje");
-        }
-
-        user.setImie(imie);
-        user.setNazwisko(nazwisko);
-        user.setNrTel(nrTel);
-        user.setAdres(adres);
-        user.setMiejscowosc(miejscowosc);
-        user.setNrDowodu(nrDowodu);
-
-        uzytkownikRepository.update(user);
-        return user;
-    }
+//    public Uzytkownik updateProfile(int userId, String imie, String nazwisko,
+//                                    int nrTel, String adres, String miejscowosc, String nrDowodu) {
+//
+//        Uzytkownik user = uzytkownikRepository.findById(userId);
+//        if (user == null) {
+//            throw new RuntimeException("Użytkownik nie istnieje");
+//        }
+//
+//        user.setImie(imie);
+//        user.setNazwisko(nazwisko);
+//        user.setNrTel(nrTel);
+//        user.setAdres(adres);
+//        user.setMiejscowosc(miejscowosc);
+//        user.setNrDowodu(nrDowodu);
+//
+//        uzytkownikRepository.update(user);
+//        return user;
+//    }
 }
