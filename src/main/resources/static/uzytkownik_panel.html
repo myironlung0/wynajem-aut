@@ -82,17 +82,23 @@
     </div>
     <div class="uzytkownik_panel hidden" id="panel-haslo">
         <h2>Zmiana hasła</h2>
-        <form action="/uzytkownik_panel/zmiana_hasla" method="post">
+        <!-- formularz -->
+        <form id="form-zmiana-hasla">
             <label>Aktualne hasło: *</label>
-            <input type="password" name="currentPassword" required>
+            <input type="password" id="currentPassword" required>
 
             <label>Nowe hasło: *</label>
-            <input type="password" name="newPassword" required>
+            <input type="password" id="newPassword" required>
 
             <label>Potwierdź nowe hasło: *</label>
-            <input type="password" name="confirmNewPassword" required>
+            <input type="password" id="confirmNewPassword" required>
 
-            <br><button type="submit">Zmień hasło</button>
+            <!-- ZMIENIĆ: dodaj div na komunikaty -->
+            <div id="haslo-message" style="display: none; padding: 10px; margin: 10px 0; border-radius: 4px;"></div>
+
+            <br>
+            <!-- type button on click -->
+            <button type="button" onclick="zmienHaslo()">Zmień hasło</button>
         </form>
     </div>
     <div class="uzytkownik_panel hidden" id="panel-historia">
@@ -111,5 +117,6 @@
 </div>
 <script src="/js/session-handler.js"></script>
 <script src="/js/show-panel.js"></script>
+<script src="/js/change-password.js"></script>
 </body>
 </html>

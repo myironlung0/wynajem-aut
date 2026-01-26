@@ -38,11 +38,12 @@ function renderCars(cars) {
             </div>
 
             <div class="auto-info">
-                <h3>${escapeHtml(c.marka)} ${escapeHtml(c.model)}</h3>
+                <h3>${escapeHtml(c.marka)} ${escapeHtml(c.model)}</h3> 
                 <p><strong>Przebieg:</strong> ${formatMileage(c.przebieg)}</p>
                 <p class="cena"><strong>Cena:</strong> ${formatPrice(c.cena)}</p>
                 <button class="rezerwacjaBtn" onclick="window.location.href='/samochody/${encodeURIComponent(c.id)}'">Zobacz szczegóły</button>
-                <button class="rezerwacjaBtn" onclick="window.location.href='/rezerwacje'">Zarezerwuj</button>
+                <button class="rezerwacjaBtn" onclick="window.location.href='/rezerwacje/formularz/${encodeURIComponent(c.id)}'">Zarezerwuj</button>
+
             </div>
         </div>
     `).join('');

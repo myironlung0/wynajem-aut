@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <h1>WYNAJEM SAMOCHODOW</h1>
+    <span id="witaj-tekst">witaj</span>
+    <ul>
+        <!-- Przycisk PANEL UZYTKOWNIKA- widoczny tylko dla zalogowanych -->
+        <li><a href="/uzytkownik_panel.html" id="btn-panel" class="zalogujButton hidden">Moje konto</a></li>
+
+        <!-- Przycisk WYLOGUJ - widoczny tylko dla zalogowanych -->
+        <li><a href="/logout" id="btn-wyloguj" class="zalogujButton hidden">Wyloguj</a></li>
+
+        <!-- Przycisk ZALOGUJ - widoczny tylko dla niezalogowanych -->
+        <li><a href="/login" id="btn-zaloguj" class="zalogujButton">Zaloguj</a></li>
+    </ul>
+</header>
+<nav>
+    <ul>
+        <li><a href="/glowna.html">Home</a></li>
+        <li><a href="/wyszukaj.html">Oferta</a></li>
+        <li><a href="/kontakt.html">Kontakt</a></li>
+        <li><a href="/onas.html">O nas</a></li>
+    </ul>
+</nav>
+<h2>Twój samochód przyjedzie na miejsce tak szybko jak tylko może tylko... Kiedy?</h2>
+<div class="rezerwacja-container">
+    <input type="text" id="searchInput" class="wyszukajPasek"
+           placeholder="Wyszukaj miejsce i datę rezerwacji...">
+    <label>Odbiór samochodu</label>
+    <input type="date" id="dateOdbior">
+    <input type="time" id="timeOdbior">
+    <label>Zwrot samochodu</label>
+    <input type="date" id="dataZwrot">
+    <input type="time" id="timeZwrot">
+    <button type="submit">Zarezerwuj</button>
+</div>
+<script src="/js/session-handler.js"></script>
+</body>
+</html>

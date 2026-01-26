@@ -76,22 +76,31 @@ public class AuthService {
         logowanieRepository.create(log);
     }
 
-//    public Uzytkownik updateProfile(int userId, String imie, String nazwisko,
-//                                    int nrTel, String adres, String miejscowosc, String nrDowodu) {
-//
-//        Uzytkownik user = uzytkownikRepository.findById(userId);
-//        if (user == null) {
-//            throw new RuntimeException("Użytkownik nie istnieje");
-//        }
-//
-//        user.setImie(imie);
-//        user.setNazwisko(nazwisko);
-//        user.setNrTel(nrTel);
-//        user.setAdres(adres);
-//        user.setMiejscowosc(miejscowosc);
-//        user.setNrDowodu(nrDowodu);
-//
-//        uzytkownikRepository.update(user);
-//        return user;
-//    }
+    public void updateHaslo(int userId, String currentPassword, String newPassword, String confirmNewPassword){
+        if (newPassword == null || newPassword.trim().isEmpty()) {
+            throw new RuntimeException("Nowe hasło nie może być puste");
+        }
+
+        if (!newPassword.equals(confirmNewPassword)) {
+            throw new RuntimeException("Hasła nie są identyczne");
+        }
+        Logowanie logowanie = logowanieRepository.findByIdUzytkownika(userId);
+        if (logowanie == null) {
+            throw new RuntimeException("Nie znaleziono danych logowania");
+        }
+
+        // czy haslo aktualne zgadza sie z tym w bazie
+        if (!passwordEncoder.matches(currentPassword, logowanie.getHasloHash())) {
+            throw new RuntimeException("Aktualne hasło jest nieprawidłowe");
+        }
+
+        // czy haslo rozni sie od starego
+        if (passwordEncoder.matches(newPassword, logowanie.getHasloHash())) {
+            throw new RuntimeException("Nowe hasło musi różnić się od aktualnego");
+        }
+
+        String hashedNewPassword = passwordEncoder.encode(newPassword);
+
+        logowanieRepository.updateHaslo(userId, hashedNewPassword);
+    }
 }

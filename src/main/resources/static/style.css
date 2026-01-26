@@ -373,3 +373,25 @@ input.wyszukajPasek[type="text"]{
     color: white;
     transform: scale(1.05);
 }
+.rezerwacja-container{
+    display: block;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #ffdcdc;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+.rezerwacja-container button{
+    background-color: #ff6f61;
+    color: white;
+    font-weight: 600;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.rezerwacja-container button:hover{
+    background-color: #8b0000;
+}

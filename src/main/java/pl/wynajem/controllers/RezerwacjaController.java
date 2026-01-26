@@ -28,10 +28,10 @@ public class RezerwacjaController {
     @Autowired
     private SamochodService samochodService;
 
-    // nowa rezerwacja formualrz
+    // api do pobieranai danych samochodu
     @GetMapping("/nowa/{samochodId}")
     @ResponseBody
-    public Map<String, Object> formularz(@PathVariable int samochodId, HttpSession session) {
+    public Map<String, Object> getDaneRezerwacji(@PathVariable int samochodId, HttpSession session) {
 
         Map<String, Object> response = new HashMap<>();
 
@@ -59,6 +59,19 @@ public class RezerwacjaController {
         //  w formularzu pola input na daty
 
         return response;
+    }
+
+    // formularz
+    @GetMapping("/formularz/{samochodId}")
+    public String formularzStrona(@PathVariable int samochodId, HttpSession session, RedirectAttributes redirectAttributes) {
+        Uzytkownik user = (Uzytkownik) session.getAttribute("user");
+        if (user == null) {
+
+            redirectAttributes.addFlashAttribute("error", "Musisz być zalogowany, aby zarezerwować samochód");
+            session.setAttribute("redirectAfterLogin", "/rezerwacje/formularz/" + samochodId);
+            return "redirect:/login";
+        }
+        return "forward:/formularz.html";
     }
 
     // zapisz rezerwacje w systemie

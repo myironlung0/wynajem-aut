@@ -36,6 +36,14 @@ public class AuthController {
             Uzytkownik user = authService.login(login, haslo);
             session.setAttribute("user", user);
             session.removeAttribute("error");
+
+            // czy bylo przekierowanie z rezerwacji
+            String redirectUrl = (String) session.getAttribute("redirectAfterLogin");
+            if (redirectUrl != null) {
+                session.removeAttribute("redirectAfterLogin");
+                return "redirect:" + redirectUrl;
+            }
+
             return "redirect:/glowna.html"; // po zalogowaniu na strone glowna od razu
         } catch (RuntimeException e) {
             session.setAttribute("error", e.getMessage());
