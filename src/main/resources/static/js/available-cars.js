@@ -14,7 +14,6 @@ function fetchCars(query = '') {
         });
 }
 
-
 function renderCars(cars) {
     let container = $('.lista-aut');
 
@@ -30,6 +29,8 @@ function renderCars(cars) {
         return;
     }
 
+    container = document.querySelector('.lista-aut');
+
     const html = cars.map(c => `
         <div class="auto-card">
             <div class="auto-img">
@@ -38,9 +39,10 @@ function renderCars(cars) {
 
             <div class="auto-info">
                 <h3>${escapeHtml(c.marka)} ${escapeHtml(c.model)}</h3>
-                <p><strong>VIN:</strong> ${escapeHtml(c.nr_VIN)}</p>
                 <p><strong>Przebieg:</strong> ${formatMileage(c.przebieg)}</p>
                 <p class="cena"><strong>Cena:</strong> ${formatPrice(c.cena)}</p>
+                <button class="rezerwacjaBtn" onclick="window.location.href='/samochody/${encodeURIComponent(c.id)}'">Zobacz szczegóły</button>
+                <button class="rezerwacjaBtn" onclick="window.location.href='/rezerwacje'">Zarezerwuj</button>
             </div>
         </div>
     `).join('');

@@ -29,36 +29,87 @@
         <li><a href="onas.html">O nas</a></li>
     </ul>
 </nav>
-<div class="uzytkownik_panel">
-    <h2>Twoje dane</h2>
-    <form action="/uzytkownik_panel/update" method="post">
-        <label>Imię: *</label>
-        <input type="text" name="imie" id="imie" required>
+<div class="uzytkownik_container">
+    <aside class="panel_boczny">
+        <h3>Twoje dane</h3>
+        <p><strong>Imię:</strong> <span id="info-imie"></span></p>
+        <p><strong>Nazwisko:</strong> <span id="info-nazwisko"></span></p>
+        <p><strong>Email:</strong> <span id="info-email"></span></p>
+        <p><strong>Telefon:</strong> <span id="info-telefon"></span></p>
+        <p><strong>Adres:</strong> <span id="info-adres"></span></p>
+        <p><strong>Miejscowość:</strong> <span id="info-miejscowosc"></span></p>
+        <p><strong>Data urodzenia:</strong> <span id="info-data-ur"></span></p>
+        <p><strong>Nr. dowodu:</strong> <span id="info-dowod"></span></p>
+    </aside>
+    <div class="uzytkownik_menu">
+        <h2>Witaj w swoim panelu użytkownika!</h2>
+        <p>Tu możesz zarządzać swoimi danymi oraz przeglądać historię wynajmów.</p>
+        <button class="uzytkownikBtn" onclick="pokazPanel('panel-dane')">Edytuj dane</button>
+        <button class="uzytkownikBtn" onclick="pokazPanel('panel-historia')">Historia wynajmów</button>
+        <button class="uzytkownikBtn" onclick="pokazPanel('panel-haslo')">Zmień hasło</button>
+    </div>
+</div>
+<div class="uzytkownik_container">
+    <div class="uzytkownik_panel hidden" id="panel-dane">
+        <h2>Zmień dane</h2>
+        <form action="/uzytkownik_panel/update" method="post">
+            <label>Imię: *</label>
+            <input type="text" name="imie" id="imie" required>
 
-        <label>Nazwisko: *</label>
-        <input type="text" name="nazwisko" id="nazwisko" required>
+            <label>Nazwisko: *</label>
+            <input type="text" name="nazwisko" id="nazwisko" required>
 
-        <label>Nr telefonu: *</label>
-        <input type="number" name="nrTel" id="nrTel" required>
+            <label>Nr telefonu: *</label>
+            <input type="number" name="nrTel" id="nrTel" required>
 
-        <label>Adres:</label>
-        <input type="text" name="adres" id="adres">
+            <label>Adres:</label>
+            <input type="text" name="adres" id="adres">
 
-        <label>Miejscowość:</label>
-        <input type="text" name="miejscowosc" id="miejscowosc">
+            <label>Miejscowość:</label>
+            <input type="text" name="miejscowosc" id="miejscowosc">
 
-        <label>Adres Email:</label>
-        <input type="email" name="email" id="email">
+            <label>Adres Email:</label>
+            <input type="email" name="email" id="email">
 
-        <label>Data urodzenia:</label>
-        <input type="date" name="data_ur" id="data_ur">
+            <label>Data urodzenia:</label>
+            <input type="date" name="data_ur" id="data_ur">
 
-        <label>Nr dowodu:</label>
-        <input type="text" name="nrDowodu" id="nrDowodu">
+            <label>Nr dowodu:</label>
+            <input type="text" name="nrDowodu" id="nrDowodu">
 
-        <button type="submit">Zapisz zmiany</button>
-    </form>
+            <br><button type="submit">Zapisz zmiany</button>
+        </form>
+    </div>
+    <div class="uzytkownik_panel hidden" id="panel-haslo">
+        <h2>Zmiana hasła</h2>
+        <form action="/uzytkownik_panel/zmiana_hasla" method="post">
+            <label>Aktualne hasło: *</label>
+            <input type="password" name="currentPassword" required>
+
+            <label>Nowe hasło: *</label>
+            <input type="password" name="newPassword" required>
+
+            <label>Potwierdź nowe hasło: *</label>
+            <input type="password" name="confirmNewPassword" required>
+
+            <br><button type="submit">Zmień hasło</button>
+        </form>
+    </div>
+    <div class="uzytkownik_panel hidden" id="panel-historia">
+        <h2>Historia wynajmów</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Data wynajmu</th>
+                <th>Data zwrotu</th>
+                <th>Samochód</th>
+                <th>Status</th>
+            </tr>
+            </thead>
+        </table>
+    </div>
 </div>
 <script src="/js/session-handler.js"></script>
+<script src="/js/show-panel.js"></script>
 </body>
 </html>
