@@ -342,17 +342,46 @@ input.wyszukajPasek[type="text"]{
     justify-content: center;
     margin-top: 40px;
 }
+
+/* PANEL BOCZNY PANEL UZYTKOWNIKA*/
 .panel_boczny{
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 15px;
     margin-right: 40px;
     width: 280px;
     padding: 20px;
-    border-radius: 12px;
+    border-radius: 15px;
     background-color: #ffdcdc;
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     height: fit-content;
+}
+
+.panel_boczny h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #8b0000;
+    font-size: 22px;
+    border-bottom: 2px solid #ff6f61;
+    padding-bottom: 10px;
+}
+
+.panel_boczny dl {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 10px 20px;
+    align-items: center;
+}
+
+.panel_boczny dt {
+    font-weight: 600;
+    color: #420909;
+}
+
+.panel_boczny dd {
+    margin: 0;
+    color: #420909;
+    word-break: break-word; /* przy długich adresach */
 }
 .uzytkownik_menu{
     box-sizing: border-box;
@@ -404,6 +433,15 @@ input.wyszukajPasek[type="text"]{
 .uzytkownik_panel button:hover{
     background-color: #8b0000;
 }
+
+.uzytkownik_panel form {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    row-gap: 18px;
+    column-gap: 25px;
+    align-items: center;
+}
+
 .uzytkownikBtn{
     background-color: #ffdcdc;
     padding: 20px;

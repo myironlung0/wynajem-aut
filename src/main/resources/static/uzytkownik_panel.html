@@ -32,14 +32,31 @@
 <div class="uzytkownik_container">
     <aside class="panel_boczny">
         <h3>Twoje dane</h3>
-        <p><strong>Imię:</strong> <span id="info-imie"></span></p>
-        <p><strong>Nazwisko:</strong> <span id="info-nazwisko"></span></p>
-        <p><strong>Email:</strong> <span id="info-email"></span></p>
-        <p><strong>Telefon:</strong> <span id="info-telefon"></span></p>
-        <p><strong>Adres:</strong> <span id="info-adres"></span></p>
-        <p><strong>Miejscowość:</strong> <span id="info-miejscowosc"></span></p>
-        <p><strong>Data urodzenia:</strong> <span id="info-data-ur"></span></p>
-        <p><strong>Nr. dowodu:</strong> <span id="info-dowod"></span></p>
+        <dl>
+            <dt>Imię:</dt>
+            <dd id="info-imie"></dd>
+
+            <dt>Nazwisko:</dt>
+            <dd id="info-nazwisko"></dd>
+
+            <dt>Email:</dt>
+            <dd id="info-email"></dd>
+
+            <dt>Telefon:</dt>
+            <dd id="info-telefon"></dd>
+
+            <dt>Adres:</dt>
+            <dd id="info-adres"></dd>
+
+            <dt>Miejscowość:</dt>
+            <dd id="info-miejscowosc"></dd>
+
+            <dt>Data urodzenia:</dt>
+            <dd id="info-data-ur"></dd>
+
+            <dt>Nr dowodu:</dt>
+            <dd id="info-dowod"></dd>
+        </dl>
     </aside>
     <div class="uzytkownik_menu">
         <h2>Witaj w swoim panelu użytkownika!</h2>
@@ -52,15 +69,15 @@
 <div class="uzytkownik_container">
     <div class="uzytkownik_panel hidden" id="panel-dane">
         <h2>Zmień dane</h2>
-        <form action="/uzytkownik_panel/update" method="post">
-            <label>Imię: *</label>
-            <input type="text" name="imie" id="imie" required>
+        <form id="form-dane">
+            <label>Imię:</label>
+            <input type="text" name="imie" id="imie" >
 
-            <label>Nazwisko: *</label>
-            <input type="text" name="nazwisko" id="nazwisko" required>
+            <label>Nazwisko:</label>
+            <input type="text" name="nazwisko" id="nazwisko" >
 
-            <label>Nr telefonu: *</label>
-            <input type="number" name="nrTel" id="nrTel" required>
+            <label>Nr telefonu:</label>
+            <input type="number" name="nrTel" id="nrTel" >
 
             <label>Adres:</label>
             <input type="text" name="adres" id="adres">
@@ -127,5 +144,6 @@
 <script src="/js/show-panel.js"></script>
 <script src="/js/change-password.js"></script>
 <script src="/js/reservations-panel.js"></script>
+<script src="/js/update-profile.js"></script>
 </body>
 </html>
