@@ -561,6 +561,7 @@ input.wyszukajPasek[type="text"]{
     padding: 14px 40px;
     border-radius: 12px;
     text-decoration: none;
+    display: inline-block;
     transition: all 0.3s ease;
 }
 
