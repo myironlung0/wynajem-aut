@@ -682,11 +682,6 @@ input.wyszukajPasek[type="text"]{
 #rezerwacje-table tbody tr:nth-child(odd) {
     background-color: #ffe5e5;
 }
-/* Hover */
-#rezerwacje-table tbody tr:hover {
-    background-color: #ffdbdb;
-    transition: background-color 0.2s ease;
-}
 /* Wyrównania */
 #rezerwacje-table td:nth-child(4),
 #rezerwacje-table td:nth-child(6) {
@@ -701,9 +696,6 @@ input.wyszukajPasek[type="text"]{
     font-weight: 600;
     color: white;
 }
-.status--potwierdzona { background-color: #2e8b57; }   /* zielony */
-.status--oczekuje    { background-color: #ff6f61; }   /* koral */
-.status--anulowana   { background-color: #8b0000; }   /* bordowy */
 /* Pusta lista */
 #brak-rezerwacji {
     background-color: #ffdcdc;
