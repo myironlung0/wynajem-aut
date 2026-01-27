@@ -505,3 +505,88 @@ input.wyszukajPasek[type="text"]{
     font-weight: 600;
     color: #8b0000;
 }
+
+/*o nas zdjecie styl*/
+.onas-intro img {
+    width: 100%;
+    max-width: 900px; /* dopasowanie do szerokości kontenera */
+    display: block;
+    margin: 0 auto 30px auto; /* wycentrowanie i odstęp od tekstu */
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    object-fit: cover; /* zdjęcie wypełnia ramkę */
+    height: auto; /* lub auto, jeśli nie chcesz przycinania */
+}
+
+/* hero na stronie glownej*/
+.hero {
+    background-image: url('/galery/hand-holding-keys.jpg');
+    background-position: center;
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    align-items: center;          /* wyśrodkowanie pionowe */
+    justify-content: center;      /* wyśrodkowanie poziome */
+    margin: 40px auto;
+    position: relative;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    color: white;
+    text-align: center;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.4); /* przyciemnienie tła dla lepszego kontrastu */
+    border-radius: 15px;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero .btn {
+    background-color: #ff6f61;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 14px 40px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.hero .btn:hover {
+    background-color: #8b0000;
+    transform: scale(1.05);
+}
+
+/* glowna strona polecane napis */
+.polecane-title {
+    text-align: center;
+    font-size: 28px;
+    color: #8b0000;
+    margin: 40px 0 20px 0;      /* odstęp od góry i galerii */
+    font-weight: 600;
+    position: relative;
+}
+
+/* linia pod polecane title*/
+.polecane-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #ff6f61;
+    margin: 10px auto 0 auto; /* wyśrodkowanie linii pod nagłówkiem */
+    border-radius: 2px;
+}
+
