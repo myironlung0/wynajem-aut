@@ -42,7 +42,7 @@ function renderCars(cars) {
                 <p><strong>Przebieg:</strong> ${formatMileage(c.przebieg)}</p>
                 <p class="cena"><strong>Cena:</strong> ${formatPrice(c.cena)}</p>
                 <button class="rezerwacjaBtn" onclick="window.location.href='/samochody/${encodeURIComponent(c.id)}'">Zobacz szczegóły</button>
-                <button class="rezerwacjaBtn" onclick="window.location.href='/rezerwacje/formularz/${encodeURIComponent(c.id)}'">Zarezerwuj</button>
+                <button class="rezerwacjaBtn" id="reserveBtn" onclick="window.location.href='/rezerwacje/formularz/${encodeURIComponent(c.id)}'">Zarezerwuj</button>
 
             </div>
         </div>
