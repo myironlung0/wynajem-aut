@@ -1,5 +1,5 @@
 (function () {
-    const DEFAULT_RESERVATION_PAGE = "/formularz.html";
+    const DEFAULT_RESERVATION_BASE = "/rezerwacje/formularz";
     const LOGIN_URL = window.LOGIN_URL || "/login";
     const STATUS_URL = window.STATUS_URL || "/api/session/check";
 
@@ -47,7 +47,16 @@
 
     function resolveReservationTarget(el) {
         const btn = el.closest(RESERVE_SELECTORS);
-        return (btn && btn.getAttribute("data-reserve-url")) || DEFAULT_RESERVATION_PAGE;
+        if (!btn) return DEFAULT_RESERVATION_BASE;
+
+        const explicit = btn.getAttribute("data-reserve-url");
+        if (explicit) return explicit;
+
+        const carId = btn.getAttribute("data-car-id") || btn.dataset?.carId;
+        if (carId) {
+            return DEFAULT_RESERVATION_BASE + "/" + encodeURIComponent(carId);
+        }
+        return DEFAULT_RESERVATION_BASE;
     }
 
     async function handleClick(e) {
@@ -55,6 +64,11 @@
         e.preventDefault();
 
         const targetPage = resolveReservationTarget(e.target);
+        if (!targetPage) {
+            alert("Nie wybrano samochodu do rezerwacji.");
+            return;
+        }
+
         const loggedIn = await fetchLoginStatus();
 
         if (loggedIn === true) {

@@ -15,39 +15,31 @@ function fetchCars(query = '') {
 }
 
 function renderCars(cars) {
-    let container = $('.lista-aut');
-
+    let container = document.querySelector('.lista-aut');
     if (!container) {
         container = document.createElement('div');
         container.className = 'lista-aut';
         const box = document.querySelector('.wyszukiwarka') || document.body;
         box.insertAdjacentElement('afterend', container);
     }
-
     if (!Array.isArray(cars) || cars.length === 0) {
         container.innerHTML = '<p>Brak wyników.</p>';
         return;
     }
-
-    container = document.querySelector('.lista-aut');
-
     const html = cars.map(c => `
-        <div class="auto-card">
-            <div class="auto-img">
-                <img src="/galery/${escapeHtml(c.zdjecie)}" alt="Samochód" width="300" height="200">
-            </div>
-
-            <div class="auto-info">
-                <h3>${escapeHtml(c.marka)} ${escapeHtml(c.model)}</h3> 
-                <p><strong>Przebieg:</strong> ${formatMileage(c.przebieg)}</p>
-                <p class="cena"><strong>Cena:</strong> ${formatPrice(c.cena)}</p>
-                <button class="rezerwacjaBtn" onclick="window.location.href='/samochody/${encodeURIComponent(c.id)}'">Zobacz szczegóły</button>
-                <button class="rezerwacjaBtn" id="reserveBtn" onclick="window.location.href='/rezerwacje/formularz/${encodeURIComponent(c.id)}'">Zarezerwuj</button>
-
-            </div>
-        </div>
-    `).join('');
-
+    <div class="auto-card">
+      <div class="auto-img">
+        <img src="/galery/${escapeHtml(c.zdjecie)}" alt="Samochód" width="300" height="200">
+      </div>
+      <div class="auto-info">
+        <h3>${escapeHtml(c.marka)} ${escapeHtml(c.model)}</h3>
+        <p><strong>Przebieg:</strong> ${formatMileage(c.przebieg)}</p>
+        <p class="cena"><strong>Cena:</strong> ${formatPrice(c.cena)}</p>
+        <a class="rezerwacjaBtn" href="/samochody/${encodeURIComponent(c.id)}">Zobacz szczegóły</a>
+        <button class="rezerwacjaBtn" id="reserveBtn" data-action="reserve" data-car-id="${encodeURIComponent(c.id)}">Zarezerwuj</button>
+      </div>
+    </div>
+  `).join('');
     container.innerHTML = html;
 }
 

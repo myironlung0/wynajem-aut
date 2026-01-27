@@ -32,15 +32,16 @@
 <h2>Twój samochód przyjedzie na miejsce tak szybko jak tylko może tylko... Kiedy?</h2>
 <div class="rezerwacja-container">
     <input type="text" id="searchInput" class="wyszukajPasek"
-           placeholder="Wyszukaj miejsce i datę rezerwacji...">
+    placeholder="Zielona Góra, ul. Podgórna 50" disabled>
     <label>Odbiór samochodu</label>
     <input type="date" id="dateOdbior">
     <input type="time" id="timeOdbior">
     <label>Zwrot samochodu</label>
     <input type="date" id="dataZwrot">
     <input type="time" id="timeZwrot">
-    <button type="submit">Zarezerwuj</button>
+    <button type="submit" id="reserveSubmit">Zarezerwuj</button>
 </div>
 <script src="/js/session-handler.js"></script>
+<script src="/js/reservations-submit.js"></script>
 </body>
 </html>
