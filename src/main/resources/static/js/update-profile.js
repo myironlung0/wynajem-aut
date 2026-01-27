@@ -1,4 +1,3 @@
-// javascript
 document.getElementById('form-dane').addEventListener('submit', function (e) {
     e.preventDefault();
     aktualizujProfil();
