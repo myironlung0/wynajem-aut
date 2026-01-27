@@ -1,5 +1,6 @@
 package pl.wynajem.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import pl.wynajem.config.SecurityConfig;
@@ -15,6 +16,9 @@ public class AuthService {
     private final LogowanieRepository logowanieRepository;
     private final UzytkownikRepository uzytkownikRepository;
     private final PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private EmailService emailService;
 
     public AuthService(LogowanieRepository logowanieRepository, UzytkownikRepository uzytkownikRepository, PasswordEncoder passwordEncoder) {
         this.logowanieRepository = logowanieRepository;
@@ -74,6 +78,8 @@ public class AuthService {
         String hashedPassword = passwordEncoder.encode(password);
         log.setHasloHash(hashedPassword);
         logowanieRepository.create(log);
+
+        emailService.wyslijMailPowitalny(uzytkownik);
     }
 
     public void updateHaslo(int userId, String currentPassword, String newPassword, String confirmNewPassword){
