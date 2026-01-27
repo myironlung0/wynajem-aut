@@ -93,7 +93,7 @@
             <label>Potwierdź nowe hasło: *</label>
             <input type="password" id="confirmNewPassword" required>
 
-            <!-- ZMIENIĆ: dodaj div na komunikaty -->
+            <!-- div na komunikaty -->
             <div id="haslo-message" style="display: none; padding: 10px; margin: 10px 0; border-radius: 4px;"></div>
 
             <br>
@@ -103,20 +103,29 @@
     </div>
     <div class="uzytkownik_panel hidden" id="panel-historia">
         <h2>Historia wynajmów</h2>
-        <table>
+        <table id="rezerwacje-table">
             <thead>
             <tr>
-                <th>Data wynajmu</th>
-                <th>Data zwrotu</th>
+                <th>Data od</th>
+                <th>Data do</th>
                 <th>Samochód</th>
+                <th>Cena</th>
                 <th>Status</th>
+                <th>Nr rezerwacji</th>
             </tr>
             </thead>
+            <tbody id="rezerwacje-body">
+            <!-- js wstawic dane -->
+            </tbody>
         </table>
+        <div id="brak-rezerwacji" style="display: none; text-align: center; padding: 20px;">
+            Nie masz jeszcze żadnych rezerwacji.
+        </div>
     </div>
 </div>
 <script src="/js/session-handler.js"></script>
 <script src="/js/show-panel.js"></script>
 <script src="/js/change-password.js"></script>
+<script src="/js/reservations-panel.js"></script>
 </body>
 </html>
