@@ -7,6 +7,7 @@ import pl.wynajem.models.Samochod;
 import pl.wynajem.models.Uzytkownik;
 import pl.wynajem.repositories.RezerwacjaRepository;
 import pl.wynajem.repositories.SamochodRepository;
+import pl.wynajem.repositories.UzytkownikRepository;
 
 import java.math.BigDecimal;
 import java.time.Duration;
@@ -22,6 +23,10 @@ public class RezerwacjaService {
     private RezerwacjaRepository rezerwacjaRepository;
     @Autowired
     private SamochodRepository samochodRepository;
+    @Autowired
+    private EmailService emailService;
+    @Autowired
+    private UzytkownikRepository uzytkownikRepository;
 
     public void czyZweryfikowany(Uzytkownik user){
         if(user.getCzyZweryfikowany().equals("N")){
@@ -94,6 +99,13 @@ public class RezerwacjaService {
         }
 
         rezerwacjaRepository.create(rezerwacja);
+
+        Uzytkownik uzytkownik = uzytkownikRepository.findById(rezerwacja.getIdUzytkownika());
+
+        if (uzytkownik != null && samochod != null) {
+            emailService.wyslijPotwierdzenieRezerwacji(uzytkownik, rezerwacja, samochod);
+        }
+
     }
 
     public void delete(int id) {
