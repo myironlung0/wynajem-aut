@@ -178,8 +178,30 @@ a.regChk{ /* "Zapoznałem/łam się z regulaminem" */
     color: lightcoral;
 }
 .kontakt{
-    display: block;
+    display: grid;
+    max-width: 1200px;
+    margin: 0 auto;        /* symetrycznie lewo/prawo */
+    padding: 40px 20px;
 }
+
+.kontakt h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #8b0000;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.kontakt h2::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 4px;
+    background-color: #ff6f61;
+    margin: 12px auto 0;
+    border-radius: 2px;
+}
+
 .kontakt-container{
     display: flex;
     gap: 40px;
@@ -196,6 +218,15 @@ a.regChk{ /* "Zapoznałem/łam się z regulaminem" */
 .kontakt-mapa{
     flex: 1 1 300px;
     max-width: 600px;
+}
+
+/* naglowej nad mapa - znajdz nas na mapie */
+.kontakt-mapa h3 {
+    text-align: center;
+    font-size: 22px;
+    color: #8b0000;
+    margin: 0;
+    font-weight: 600;
 }
 .galeria{ /* Galeria zdjęć */
     max-width: 750px;
