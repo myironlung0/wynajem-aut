@@ -20,6 +20,18 @@ header h1 { /* WYNAJEM SAMOCHODÓW */
     padding: 20px;
     color: #8B0000;
 }
+
+/* Aby przyciski nie byly porozwalane */
+header ul{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0 20px 10px 0;
+}
+
 nav{ /* Blok nawigacyjny menu */
     text-align: center;
     height: 10%;
@@ -64,7 +76,6 @@ ul a:link, ul a:visited /* Nie widać odwiedzonych linków */
 }
 .zalogujButton{ /* Przycisk zaloguj */
     display: block;
-    float: right;
     border: solid 2px #8b0000;
     background-color: #ff6f61;
     color: white;
@@ -75,9 +86,10 @@ ul a:link, ul a:visited /* Nie widać odwiedzonych linków */
     text-align: center;
     border-radius: 10px;
 }
-.zalogujButton hidden{
+.zalogujButton.hidden{
     display: none;
 }
+
 a.zalogujButton:hover{ /* Przycisk zaloguj po najechaniu na niego */
     background-color: #8b0000;
     color: #ffdcdc;
