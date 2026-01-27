@@ -7,7 +7,7 @@ CREATE TABLE `uzytkownik` (
   `nr_tel` int(9) NOT NULL UNIQUE,
   `email` varchar(100) NOT NULL UNIQUE,
   `nr_dowodu` varchar(9) DEFAULT NULL,
-  `data_ur` date DEFAULT NULL,
+  `data_ur` date NOT NULL,
   czy_zweryfikowany ENUM('T','N') DEFAULT 'N',
   PRIMARY KEY (`id`),
   UNIQUE INDEX `email_UNIQUE` (`email`),
