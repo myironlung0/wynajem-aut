@@ -1,11 +1,14 @@
 package pl.wynajem.models;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Rezerwacja {
     private int id;
-    private LocalDate dataOd;
-    private LocalDate dataDo;
+    private LocalDateTime dataOd;
+    private LocalDateTime dataDo;
+    private BigDecimal cenaKoncowa;
     private int nrTel;
     private String email;
     private int idUzytkownika;
@@ -15,9 +18,10 @@ public class Rezerwacja {
 
     public Rezerwacja() {}
 
-    public Rezerwacja(LocalDate dataOd, LocalDate dataDo, int nrTel, String email, int idUzytkownika, int idSamochodu, String nrRezerwacji) {
+    public Rezerwacja(LocalDateTime dataOd, LocalDateTime dataDo, BigDecimal cenaKoncowa, int nrTel, String email, int idUzytkownika, int idSamochodu, String nrRezerwacji) {
         this.dataOd = dataOd;
         this.dataDo = dataDo;
+        this.cenaKoncowa = cenaKoncowa;
         this.nrTel = nrTel;
         this.email = email;
         this.idUzytkownika = idUzytkownika;
@@ -34,20 +38,28 @@ public class Rezerwacja {
         this.id = id;
     }
 
-    public LocalDate getDataOd() {
+    public LocalDateTime getDataOd() {
         return dataOd;
     }
 
-    public void setDataOd(LocalDate dataOd) {
+    public void setDataOd(LocalDateTime dataOd) {
         this.dataOd = dataOd;
     }
 
-    public LocalDate getDataDo() {
+    public LocalDateTime getDataDo() {
         return dataDo;
     }
 
-    public void setDataDo(LocalDate dataDo) {
+    public void setDataDo(LocalDateTime dataDo) {
         this.dataDo = dataDo;
+    }
+
+    public BigDecimal getCenaKoncowa() {
+        return cenaKoncowa;
+    }
+
+    public void setCenaKoncowa(BigDecimal cenaKoncowa) {
+        this.cenaKoncowa = cenaKoncowa;
     }
 
     public int getNrTel() {

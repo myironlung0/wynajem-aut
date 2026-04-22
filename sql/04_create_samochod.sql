@@ -11,3 +11,5 @@ CREATE TABLE `samochod` (
   INDEX `idx_samochod_marka_model` (`marka`, `model`),
   INDEX `idx_samochod_przebieg` (`przebieg`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE samochod ADD COLUMN zdjecie VARCHAR(500);

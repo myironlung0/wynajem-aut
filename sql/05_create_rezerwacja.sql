@@ -15,3 +15,9 @@ CREATE TABLE rezerwacja (
     INDEX `idx_rezerwacja_numer` (`nr_rezerwacji`),
     INDEX `idx_rezerwacja_daty` (`data_od`, `data_do`)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE rezerwacja
+    MODIFY data_od DATETIME NOT NULL,
+    MODIFY data_do DATETIME NOT NULL,
+    ADD COLUMN cena_koncowa DECIMAL(10,2) NOT NULL AFTER data_do;
+

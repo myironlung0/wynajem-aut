@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Panel użytkownika</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <h1>WYNAJEM SAMOCHODÓW - Panel użytkownika</h1>
+    <span id="witaj-tekst">witaj</span>
+    <ul>
+        <!-- Przycisk PANEL UZYTKOWNIKA- widoczny tylko dla zalogowanych -->
+        <li><a href="/uzytkownik_panel" id="btn-panel" class="zalogujButton hidden">Moje konto</a></li>
+
+        <!-- Przycisk WYLOGUJ - widoczny tylko dla zalogowanych -->
+        <li><a href="/logout" id="btn-wyloguj" class="zalogujButton hidden">Wyloguj</a></li>
+
+        <!-- Przycisk ZALOGUJ - widoczny tylko dla niezalogowanych -->
+        <li><a href="/login" id="btn-zaloguj" class="zalogujButton">Zaloguj</a></li>
+    </ul>
+</header>
+<nav>
+    <ul>
+        <li><a href="glowna.html">Home</a></li>
+        <li><a href="wyszukaj.html">Oferta</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="onas.html">O nas</a></li>
+    </ul>
+</nav>
+<div class="uzytkownik_container">
+    <aside class="panel_boczny">
+        <h3>Twoje dane</h3>
+        <dl>
+            <dt>Imię:</dt>
+            <dd id="info-imie"></dd>
+
+            <dt>Nazwisko:</dt>
+            <dd id="info-nazwisko"></dd>
+
+            <dt>Email:</dt>
+            <dd id="info-email"></dd>
+
+            <dt>Telefon:</dt>
+            <dd id="info-telefon"></dd>
+
+            <dt>Adres:</dt>
+            <dd id="info-adres"></dd>
+
+            <dt>Miejscowość:</dt>
+            <dd id="info-miejscowosc"></dd>
+
+            <dt>Data urodzenia:</dt>
+            <dd id="info-data-ur"></dd>
+
+            <dt>Nr dowodu:</dt>
+            <dd id="info-dowod"></dd>
+        </dl>
+    </aside>
+    <div class="uzytkownik_menu">
+        <h2>Witaj w swoim panelu użytkownika!</h2>
+        <p>Tu możesz zarządzać swoimi danymi oraz przeglądać historię wynajmów.</p>
+        <button class="uzytkownikBtn" onclick="pokazPanel('panel-dane')">Edytuj dane</button>
+        <button class="uzytkownikBtn" onclick="pokazPanel('panel-historia')">Historia wynajmów</button>
+        <button class="uzytkownikBtn" onclick="pokazPanel('panel-haslo')">Zmień hasło</button>
+    </div>
+</div>
+<div class="uzytkownik_container">
+    <div class="uzytkownik_panel hidden" id="panel-dane">
+        <h2>Zmień dane</h2>
+        <form id="form-dane">
+            <label>Imię:</label>
+            <input type="text" name="imie" id="imie" >
+
+            <label>Nazwisko:</label>
+            <input type="text" name="nazwisko" id="nazwisko" >
+
+            <label>Nr telefonu:</label>
+            <input type="number" name="nrTel" id="nrTel" >
+
+            <label>Adres:</label>
+            <input type="text" name="adres" id="adres">
+
+            <label>Miejscowość:</label>
+            <input type="text" name="miejscowosc" id="miejscowosc">
+
+            <label>Adres Email:</label>
+            <input type="email" name="email" id="email">
+
+            <label>Data urodzenia:</label>
+            <input type="date" name="data_ur" id="data_ur">
+
+            <label>Nr dowodu:</label>
+            <input type="text" name="nrDowodu" id="nrDowodu">
+
+            <br><button type="submit">Zapisz zmiany</button>
+        </form>
+    </div>
+    <div class="uzytkownik_panel hidden" id="panel-haslo">
+        <h2>Zmiana hasła</h2>
+        <!-- formularz -->
+        <form id="form-zmiana-hasla">
+            <label>Aktualne hasło: *</label>
+            <input type="password" id="currentPassword" required>
+
+            <label>Nowe hasło: *</label>
+            <input type="password" id="newPassword" required>
+
+            <label>Potwierdź nowe hasło: *</label>
+            <input type="password" id="confirmNewPassword" required>
+
+            <!-- div na komunikaty -->
+            <div id="haslo-message" style="display: none; padding: 10px; margin: 10px 0; border-radius: 4px;"></div>
+
+            <br>
+            <!-- type button on click -->
+            <button type="button" onclick="zmienHaslo()">Zmień hasło</button>
+        </form>
+    </div>
+    <div class="uzytkownik_panel hidden" id="panel-historia">
+        <h2>Historia wynajmów</h2>
+        <table id="rezerwacje-table">
+            <thead>
+            <tr>
+                <th>Data od</th>
+                <th>Data do</th>
+                <th>Samochód</th>
+                <th>Cena</th>
+                <th>Status</th>
+                <th>Nr rezerwacji</th>
+            </tr>
+            </thead>
+            <tbody id="rezerwacje-body">
+            <!-- js wstawic dane -->
+            </tbody>
+        </table>
+        <div id="brak-rezerwacji" style="display: none; text-align: center; padding: 20px;">
+            Nie masz jeszcze żadnych rezerwacji.
+        </div>
+    </div>
+</div>
+<script src="/js/session-handler.js"></script>
+<script src="/js/show-panel.js"></script>
+<script src="/js/change-password.js"></script>
+<script src="/js/reservations-panel.js"></script>
+<script src="/js/update-profile.js"></script>
+<script src="/js/user-info.js"></script>
+</body>
+</html>

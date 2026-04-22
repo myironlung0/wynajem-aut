@@ -9,45 +9,39 @@ public class HomeController {
     // strona glowna
     @RequestMapping("/")
     public String glowna() {
-        return "glowna";
-    }
-
-    //formularz wyszukiwania aut
-    @RequestMapping("/wyszukaj")
-    public String formularzWyszukiwania() {
-        return "wyszukaj";
+        return "redirect:/glowna.html";
     }
 
     // wyniki wyszukiwania
     @RequestMapping("/wyniki")
     public String wynikiWyszukiwania() {
-        return "wyniki";
+        return "redirect:/wyniki.html";
     }
 
     //szczegoly samochodu
     @RequestMapping("/samochod/{id}")
     public String sczegolySamochodu() {
-        return "szczegoly";
+        return "redirect:/szczegoly.html";
     }
 
 
     // strona o nas
     @RequestMapping("/onas")
     public String oNas() {
-        return "onas";
+        return "redirect:/onas.html";
     }
 
     // strona kontakt
     @RequestMapping("/kontakt")
     public String kontakt() {
-        return "kontakt";
+        return "redirect:/kontakt.html";
     }
 
-    // logowanie
-    @RequestMapping("/logowanie")
-    public String logowanie() {
-        return "logowanie";
-    }
+//    // logowanie przeniesione do AuthController
+//    @RequestMapping("/login")
+//    public String login() {
+//        return "login";
+//    }
 
     //testowa   `
     @RequestMapping("/test")

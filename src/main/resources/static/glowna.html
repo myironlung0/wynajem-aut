@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Wypożyczalnia samochodów</title>
+</head>
+<body>
+<header>
+    <h1>WYNAJEM SAMOCHODOW</h1>
+    <span id="witaj-tekst">witaj</span>
+    <ul>
+        <!-- Przycisk PANEL UZYTKOWNIKA- widoczny tylko dla zalogowanych -->
+        <li><a href="uzytkownik_panel.html" id="btn-panel" class="zalogujButton hidden">Moje konto</a></li>
+
+        <!-- Przycisk WYLOGUJ - widoczny tylko dla zalogowanych -->
+        <li><a href="/logout" id="btn-wyloguj" class="zalogujButton hidden">Wyloguj</a></li>
+
+        <!-- Przycisk ZALOGUJ - widoczny tylko dla niezalogowanych -->
+        <li><a href="/login" id="btn-zaloguj" class="zalogujButton">Zaloguj</a></li>
+    </ul>
+</header>
+<nav>
+    <ul>
+        <li><a href="glowna.html">Home</a></li>
+        <li><a href="wyszukaj.html">Oferta</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="onas.html">O nas</a></li>
+    </ul>
+</nav>
+
+<div class="hero">
+    <div class="hero-content">
+        <h2>Gotowy na podróż?</h2>
+        <a class="btn" href="wyszukaj.html">Wynajmij samochód</a>
+    </div>
+</div>
+
+<h2 class="polecane-title"> Polecane:</h2>
+<div class="galeria">
+    <div class="slajd animacja">
+        <img src="galery/img1.jpg" style="width:100%">
+        <div class="opisImg">Samochód 1</div>
+    </div>
+    <div class="slajd animacja">
+        <img src="galery/img2.jpg" style="width:100%">
+        <div class="opisImg">Samochód 2</div>
+    </div>
+    <div class="slajd animacja">
+        <img src="galery/img3.jpg" style="width:100%">
+        <div class="opisImg">Samochód 3</div>
+    </div>
+</div>
+<br>
+<div class="kropka-container">
+    <span class="kropka"></span>
+    <span class="kropka"></span>
+    <span class="kropka"></span>
+</div>
+
+<div class="opinie">
+    <h2>Opinie naszych klientów</h2>
+    <div class="opinia">
+        <p>"Świetna obsługa i nowoczesne auta!"</p>
+        <span>- Jan Kowalski</span>
+    </div>
+    <div class="opinia">
+        <p>"Wynajem samochodu nigdy nie był tak prosty."</p>
+        <span>- Anna Nowak</span>
+    </div>
+</div>
+
+<script src="/js/slides-animation.js"></script>
+<script src="/js/session-handler.js"></script>
+</body>
+</html>

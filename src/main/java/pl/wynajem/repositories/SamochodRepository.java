@@ -26,6 +26,7 @@ public class SamochodRepository {
             samochod.setNrVIN(rs.getString("nr_VIN"));
             samochod.setPrzebieg(rs.getInt("przebieg"));
             samochod.setCena(rs.getBigDecimal("cena"));
+            samochod.setZdjecie(rs.getString("zdjecie"));
 
             return samochod;
         }
@@ -69,13 +70,14 @@ public class SamochodRepository {
             throw new RuntimeException("Samochod z tym VIN juz istnieje");
         }
 
-        String sql = "INSERT INTO samochod (marka, model, nr_VIN, przebieg, cena) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO samochod (marka, model, nr_VIN, przebieg, cena, zdjecie) VALUES (?, ?, ?, ?, ?, ?)";
         jdbcTemplate.update(sql,
                 samochod.getMarka(),
                 samochod.getModel(),
                 samochod.getNrVIN(),
                 samochod.getPrzebieg(),
-                samochod.getCena()
+                samochod.getCena(),
+                samochod.getZdjecie()
         );
     }
 
@@ -86,7 +88,7 @@ public class SamochodRepository {
 
     public void update(Samochod samochod){
         String sql = "UPDATE samochod SET " +
-                "marka = ?, model = ?, nr_VIN = ?, przebieg = ?, cena = ? " +
+                "marka = ?, model = ?, nr_VIN = ?, przebieg = ?, cena = ?, zdjecie = ? " +
                 "WHERE id = ?";
 
         jdbcTemplate.update(sql,
@@ -95,6 +97,7 @@ public class SamochodRepository {
                 samochod.getNrVIN(),
                 samochod.getPrzebieg(),
                 samochod.getCena(),
+                samochod.getZdjecie(),
                 samochod.getId()
         );
     }
@@ -106,8 +109,18 @@ public class SamochodRepository {
         return count != null && count > 0;
     }
 
+    public List<Samochod> search(String search) {
+        if (search == null || search.isBlank()) {
+            return findAll();
+        }
 
+        String sql = "SELECT * FROM samochod " +
+                "WHERE LOWER(marka) LIKE ? " +
+                "OR LOWER(model) LIKE ? " +
+                "OR LOWER(nr_VIN) LIKE ?";
 
+        String param = "%" + search.toLowerCase() + "%";
 
-
+        return jdbcTemplate.query(sql, rowMapper, param, param, param);
+    }
 }

@@ -9,15 +9,17 @@ public class Samochod {
     private String nrVIN;
     private int przebieg;
     private BigDecimal cena;
+    private String zdjecie;
 
     public Samochod() {}
 
-    public Samochod(String marka, String model, String nrVIN, int przebieg, BigDecimal cena) {
+    public Samochod(String marka, String model, String nrVIN, int przebieg, BigDecimal cena, String zdjecie) {
         this.marka = marka;
         this.model = model;
         this.nrVIN = nrVIN;
         this.przebieg = przebieg;
         this.cena = cena;
+        this.zdjecie = zdjecie;
     }
 
     public int getId() {
@@ -68,6 +70,14 @@ public class Samochod {
         this.cena = cena;
     }
 
+    public String getZdjecie() {
+        return zdjecie;
+    }
+
+    public void setZdjecie(String zdjecie) {
+        this.zdjecie = zdjecie;
+    }
+
     @Override
     public String toString() {
         return "Samochod{" +
@@ -77,6 +87,7 @@ public class Samochod {
                 ", nrVIN='" + nrVIN + '\'' +
                 ", przebieg=" + przebieg +
                 ", cena=" + cena +
+                ", zdjecie='" + zdjecie + '\'' +
                 '}';
     }
 }
